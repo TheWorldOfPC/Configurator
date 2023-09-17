@@ -24,3 +24,16 @@ C:\Users\Administrator\Desktop\Configurator\Configurator\obj\Debug\Configurator.
 C:\Users\Administrator\Desktop\Configurator\Configurator\obj\Debug\Configurator.csproj.CopyComplete
 C:\Users\Administrator\Desktop\Configurator\Configurator\obj\Debug\Configurator.exe
 C:\Users\Administrator\Desktop\Configurator\Configurator\obj\Debug\Configurator.pdb
+C:\Users\Administrator\Documents\GitHub\Configurator\Configurator\bin\Debug\Configurator.exe.config
+C:\Users\Administrator\Documents\GitHub\Configurator\Configurator\bin\Debug\Configurator.exe
+C:\Users\Administrator\Documents\GitHub\Configurator\Configurator\bin\Debug\Configurator.pdb
+C:\Users\Administrator\Documents\GitHub\Configurator\Configurator\bin\Debug\Guna.UI2.dll
+C:\Users\Administrator\Documents\GitHub\Configurator\Configurator\obj\Debug\Configurator.csproj.AssemblyReference.cache
+C:\Users\Administrator\Documents\GitHub\Configurator\Configurator\obj\Debug\Configurator.csproj.SuggestedBindingRedirects.cache
+C:\Users\Administrator\Documents\GitHub\Configurator\Configurator\obj\Debug\Configurator.Main.resources
+C:\Users\Administrator\Documents\GitHub\Configurator\Configurator\obj\Debug\Configurator.Properties.Resources.resources
+C:\Users\Administrator\Documents\GitHub\Configurator\Configurator\obj\Debug\Configurator.csproj.GenerateResource.cache
+C:\Users\Administrator\Documents\GitHub\Configurator\Configurator\obj\Debug\Configurator.csproj.CoreCompileInputs.cache
+C:\Users\Administrator\Documents\GitHub\Configurator\Configurator\obj\Debug\Configurator.csproj.CopyComplete
+C:\Users\Administrator\Documents\GitHub\Configurator\Configurator\obj\Debug\Configurator.exe
+C:\Users\Administrator\Documents\GitHub\Configurator\Configurator\obj\Debug\Configurator.pdb

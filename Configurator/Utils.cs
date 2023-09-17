@@ -61,7 +61,7 @@ namespace Configurator.Classes
             if (val != null)
             {
                 toggleSwitch.Checked = true;
-                toggleValue = false;
+                toggleValue = true;
             }
         }
 
