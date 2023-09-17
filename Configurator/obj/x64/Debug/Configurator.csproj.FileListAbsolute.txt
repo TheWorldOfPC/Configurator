@@ -1,0 +1,13 @@
+C:\Users\Administrator\Desktop\Configurator\Configurator\bin\x64\Debug\Configurator.exe.config
+C:\Users\Administrator\Desktop\Configurator\Configurator\bin\x64\Debug\Configurator.exe
+C:\Users\Administrator\Desktop\Configurator\Configurator\bin\x64\Debug\Configurator.pdb
+C:\Users\Administrator\Desktop\Configurator\Configurator\bin\x64\Debug\Guna.UI2.dll
+C:\Users\Administrator\Desktop\Configurator\Configurator\obj\x64\Debug\Configurator.csproj.AssemblyReference.cache
+C:\Users\Administrator\Desktop\Configurator\Configurator\obj\x64\Debug\Configurator.csproj.SuggestedBindingRedirects.cache
+C:\Users\Administrator\Desktop\Configurator\Configurator\obj\x64\Debug\Configurator.Main.resources
+C:\Users\Administrator\Desktop\Configurator\Configurator\obj\x64\Debug\Configurator.Properties.Resources.resources
+C:\Users\Administrator\Desktop\Configurator\Configurator\obj\x64\Debug\Configurator.csproj.GenerateResource.cache
+C:\Users\Administrator\Desktop\Configurator\Configurator\obj\x64\Debug\Configurator.csproj.CoreCompileInputs.cache
+C:\Users\Administrator\Desktop\Configurator\Configurator\obj\x64\Debug\Configurator.csproj.CopyComplete
+C:\Users\Administrator\Desktop\Configurator\Configurator\obj\x64\Debug\Configurator.exe
+C:\Users\Administrator\Desktop\Configurator\Configurator\obj\x64\Debug\Configurator.pdb
