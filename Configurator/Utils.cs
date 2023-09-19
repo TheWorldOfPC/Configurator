@@ -55,13 +55,12 @@ namespace Configurator.Classes
             }
         }
 
-        public static void CheckRegistryValueAndSetToggleSwitch(RegistryKey key, string valueName, Guna2ToggleSwitch toggleSwitch, ref bool toggleValue)
+        public static void CheckRegistryValueAndSetToggleSwitch(RegistryKey key, string valueName, Guna2ToggleSwitch toggleSwitch)
         {
             object val = key.GetValue(valueName);
             if (val != null)
             {
                 toggleSwitch.Checked = true;
-                toggleValue = true;
             }
         }
 

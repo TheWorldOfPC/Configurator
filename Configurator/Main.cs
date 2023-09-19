@@ -5,6 +5,7 @@ using System.Diagnostics;
 using System.Windows.Forms;
 using Configurator.Classes;
 using System.Threading.Tasks;
+using System.Runtime.InteropServices;
 
 namespace Configurator
 {
@@ -13,25 +14,6 @@ namespace Configurator
 
         public static RegistryKey Configurator = Registry.CurrentUser.CreateSubKey(@"Software\Configurator", RegistryKeyPermissionCheck.ReadWriteSubTree);
         private string DownloadsFolder = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) + "\\Downloads";
-        
-        //Bools to make sure not to apply the tweak if it's already applied, could've done better with a .json or .xml but whatever
-
-        private bool isAnimationDisabled;
-        private bool isBackgroundAppsDisabled;
-        private bool isBluetoothDisabled;
-        private bool isClipboardDisabled;
-        private bool isFSODisabled;
-        private bool isPrefetchDsabled;
-        private bool isVBSDsabled;
-        private bool isLanmanDsabled;
-        private bool isNetworkDiscoveryDsabled;
-        private bool isNotificationsDsabled;
-        private bool isPrinterDsabled;
-        private bool isVPNDsabled;
-        private bool isWiFIDsabled;
-        private bool isHAGSEnabled;
-        private bool isOldAltTab;
-        private bool isOldContextMenu;
 
         //Registry Keys
 
@@ -59,22 +41,22 @@ namespace Configurator
         {
             RegistryKey key = Configurator;
 
-            Utils.CheckRegistryValueAndSetToggleSwitch(key, "AnimationsDisabled", tsDisableAnimation, ref isAnimationDisabled);
-            Utils.CheckRegistryValueAndSetToggleSwitch(key, "DisableBackgroundApps", tsDisableBackgroundApps, ref isBackgroundAppsDisabled);
-            Utils.CheckRegistryValueAndSetToggleSwitch(key, "DisableBluetooth", tsDisableBluetooth, ref isBluetoothDisabled);
-            Utils.CheckRegistryValueAndSetToggleSwitch(key, "DisableClipboard", tsDisableClipboard, ref isClipboardDisabled);
-            Utils.CheckRegistryValueAndSetToggleSwitch(key, "DisableFSO", tsDisableFSO, ref isFSODisabled);
-            Utils.CheckRegistryValueAndSetToggleSwitch(key, "DisablePrefetch", tsDisablePrefetch, ref isPrefetchDsabled);
-            Utils.CheckRegistryValueAndSetToggleSwitch(key, "DisableHyperV", tsDisableHyperV, ref isVBSDsabled);
-            Utils.CheckRegistryValueAndSetToggleSwitch(key, "DisableWorkstation", tsDisableWorkstation, ref isLanmanDsabled);
-            Utils.CheckRegistryValueAndSetToggleSwitch(key, "DisableNetworkDiscovery", tsDisableNetworkDiscovery, ref isNetworkDiscoveryDsabled);
-            Utils.CheckRegistryValueAndSetToggleSwitch(key, "DisableNotifications", tsDisableNotifcations, ref isNotificationsDsabled);
-            Utils.CheckRegistryValueAndSetToggleSwitch(key, "DisablePrinter", tsDisablePrintSpooler, ref isPrinterDsabled);
-            Utils.CheckRegistryValueAndSetToggleSwitch(key, "DisableVPN", tsDisableVPN, ref isVPNDsabled);
-            Utils.CheckRegistryValueAndSetToggleSwitch(key, "DisableWiFi", tsDisableClipboard, ref isWiFIDsabled);
-            Utils.CheckRegistryValueAndSetToggleSwitch(key, "EnableHAGS", tsEnableHAGS, ref isHAGSEnabled);
-            Utils.CheckRegistryValueAndSetToggleSwitch(key, "OldAltTab", tsOldAltTab, ref isOldAltTab);
-            Utils.CheckRegistryValueAndSetToggleSwitch(key, "OldContextMenu", tsOldContextMenu, ref isOldContextMenu);
+            Utils.CheckRegistryValueAndSetToggleSwitch(key, "AnimationsDisabled", tsDisableAnimation);
+            Utils.CheckRegistryValueAndSetToggleSwitch(key, "DisableBackgroundApps", tsDisableBackgroundApps);
+            Utils.CheckRegistryValueAndSetToggleSwitch(key, "DisableBluetooth", tsDisableBluetooth);
+            Utils.CheckRegistryValueAndSetToggleSwitch(key, "DisableClipboard", tsDisableClipboard);
+            Utils.CheckRegistryValueAndSetToggleSwitch(key, "DisableFSO", tsDisableFSO);
+            Utils.CheckRegistryValueAndSetToggleSwitch(key, "DisablePrefetch", tsDisablePrefetch);
+            Utils.CheckRegistryValueAndSetToggleSwitch(key, "DisableHyperV", tsDisableHyperV);
+            Utils.CheckRegistryValueAndSetToggleSwitch(key, "DisableWorkstation", tsDisableWorkstation);
+            Utils.CheckRegistryValueAndSetToggleSwitch(key, "DisableNetworkDiscovery", tsDisableNetworkDiscovery);
+            Utils.CheckRegistryValueAndSetToggleSwitch(key, "DisableNotifications", tsDisableNotifcations);
+            Utils.CheckRegistryValueAndSetToggleSwitch(key, "DisablePrinter", tsDisablePrintSpooler);
+            Utils.CheckRegistryValueAndSetToggleSwitch(key, "DisableVPN", tsDisableVPN);
+            Utils.CheckRegistryValueAndSetToggleSwitch(key, "DisableWiFi", tsDisableClipboard);
+            Utils.CheckRegistryValueAndSetToggleSwitch(key, "EnableHAGS", tsEnableHAGS);
+            Utils.CheckRegistryValueAndSetToggleSwitch(key, "OldAltTab", tsOldAltTab);
+            Utils.CheckRegistryValueAndSetToggleSwitch(key, "OldContextMenu", tsOldContextMenu);
 
             OSName.Text = Utils.GetOS();
             OSArch.Text = Utils.GetBitness();
@@ -143,17 +125,24 @@ namespace Configurator
         //Checkboxes
         private void tsDisableAnimation_CheckedChanged(object sender, EventArgs e)
         {
-            if (tsDisableAnimation.Checked && isAnimationDisabled == false)
+            if (tsDisableAnimation.Checked)
             {
-                Registry.SetValue(@"HKEY_LOCAL_MACHINE\" + dwmRegistryPath, "DisallowAnimations", 1, RegistryValueKind.DWord);
-                Registry.SetValue(@"HKEY_CURRENT_USER\" + windowMetricsRegistryPath, "MinAnimate", 0, RegistryValueKind.DWord);
-                Registry.SetValue(@"HKEY_CURRENT_USER\" + explorerAdvancedRegistryPath, "TaskbarAnimations", 0, RegistryValueKind.DWord);
-                Registry.SetValue(@"HKEY_CURRENT_USER\" + visualEffectsRegistryPath, "VisualFXSetting", 3, RegistryValueKind.DWord);
+                object aVal = Configurator.GetValue("AnimationsDisabled");
+                if (null != aVal)
+                {
+                }
+                else
+                {
+                    Registry.SetValue(@"HKEY_LOCAL_MACHINE\" + dwmRegistryPath, "DisallowAnimations", 1, RegistryValueKind.DWord);
+                    Registry.SetValue(@"HKEY_CURRENT_USER\" + windowMetricsRegistryPath, "MinAnimate", 0, RegistryValueKind.DWord);
+                    Registry.SetValue(@"HKEY_CURRENT_USER\" + explorerAdvancedRegistryPath, "TaskbarAnimations", 0, RegistryValueKind.DWord);
+                    Registry.SetValue(@"HKEY_CURRENT_USER\" + visualEffectsRegistryPath, "VisualFXSetting", 3, RegistryValueKind.DWord);
 
-                byte[] userPreferencesMaskData = { 0x90, 0x12, 0x03, 0x80, 0x10, 0x00, 0x00, 0x00 };
-                Registry.SetValue(@"HKEY_CURRENT_USER\" + desktopRegistryPath, "UserPreferencesMask", userPreferencesMaskData, RegistryValueKind.Binary);
+                    byte[] userPreferencesMaskData = { 0x90, 0x12, 0x03, 0x80, 0x10, 0x00, 0x00, 0x00 };
+                    Registry.SetValue(@"HKEY_CURRENT_USER\" + desktopRegistryPath, "UserPreferencesMask", userPreferencesMaskData, RegistryValueKind.Binary);
 
-                Configurator.SetValue("AnimationsDisabled", 1);
+                    Configurator.SetValue("AnimationsDisabled", 1);
+                }
             }
             else
             {
@@ -187,12 +176,19 @@ namespace Configurator
 
         private void tsDisableBackgroundApps_CheckedChanged(object sender, EventArgs e)
         {
-            if (tsDisableBackgroundApps.Checked && isBackgroundAppsDisabled == false)
+            if (tsDisableBackgroundApps.Checked)
             {
-                Registry.SetValue(@"HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\AppPrivacy", "LetAppsRunInBackground", 2, RegistryValueKind.DWord);
-                Registry.SetValue($@"HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\BackgroundAccessApplications", "GlobalUserDisabled", 1, RegistryValueKind.DWord);
-                Registry.SetValue($@"HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Search", "BackgroundAppGlobalToggle", 0, RegistryValueKind.DWord);
-                Configurator.SetValue("DisableBackgroundApps", 1);
+                object aVal = Configurator.GetValue("DisableBackgroundApps");
+                if (null != aVal)
+                {
+                }
+                else
+                {
+                    Registry.SetValue(@"HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\AppPrivacy", "LetAppsRunInBackground", 2, RegistryValueKind.DWord);
+                    Registry.SetValue($@"HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\BackgroundAccessApplications", "GlobalUserDisabled", 1, RegistryValueKind.DWord);
+                    Registry.SetValue($@"HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Search", "BackgroundAppGlobalToggle", 0, RegistryValueKind.DWord);
+                    Configurator.SetValue("DisableBackgroundApps", 1);
+                }
             }
             else
             {
@@ -205,10 +201,17 @@ namespace Configurator
 
         private void tsDisableBluetooth_CheckedChanged(object sender, EventArgs e)
         {
-            if (tsDisableBluetooth.Checked && isBluetoothDisabled == false)
+            if (tsDisableBluetooth.Checked)
             {
-                Registry.SetValue("HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\BthAvctpSvc", "Start", 4, RegistryValueKind.DWord);
-                Configurator.SetValue("DisableBluetooth", 1);
+                object aVal = Configurator.GetValue("DisableBluetooth");
+                if (null != aVal)
+                {
+                }
+                else
+                {
+                    Registry.SetValue("HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\BthAvctpSvc", "Start", 4, RegistryValueKind.DWord);
+                    Configurator.SetValue("DisableBluetooth", 1);
+                }
             }
             else
             {
@@ -219,28 +222,35 @@ namespace Configurator
 
         private void tsDisableClipboard_CheckedChanged(object sender, EventArgs e)
         {
-            if (tsDisableClipboard.Checked && isClipboardDisabled == false)
+            if (tsDisableClipboard.Checked)
             {
-                using (RegistryKey servicesKey = Registry.LocalMachine.OpenSubKey("SYSTEM\\CurrentControlSet\\Services", true))
+                object aVal = Configurator.GetValue("DisableClipboard");
+                if (null != aVal)
                 {
-                    if (servicesKey != null)
+                }
+                else
+                {
+                    using (RegistryKey servicesKey = Registry.LocalMachine.OpenSubKey("SYSTEM\\CurrentControlSet\\Services", true))
                     {
-                        foreach (string subkeyName in servicesKey.GetSubKeyNames())
+                        if (servicesKey != null)
                         {
-                            if (subkeyName.Contains("cbdhsvc"))
+                            foreach (string subkeyName in servicesKey.GetSubKeyNames())
                             {
-                                using (RegistryKey subkey = servicesKey.OpenSubKey(subkeyName, true))
+                                if (subkeyName.Contains("cbdhsvc"))
                                 {
-                                    subkey?.SetValue("Start", 4, RegistryValueKind.DWord);
+                                    using (RegistryKey subkey = servicesKey.OpenSubKey(subkeyName, true))
+                                    {
+                                        subkey?.SetValue("Start", 4, RegistryValueKind.DWord);
+                                    }
                                 }
                             }
                         }
                     }
-                }
 
-                Registry.SetValue("HKEY_CURRENT_USER\\SOFTWARE\\Microsoft\\Clipboard", "EnableClipboardHistory", 0, RegistryValueKind.DWord);
-                Registry.SetValue("HKEY_LOCAL_MACHINE\\SOFTWARE\\Policies\\Microsoft\\Windows\\System", "AllowClipboardHistory", 0, RegistryValueKind.DWord);
-                Configurator.SetValue("DisableClipboard", 1);
+                    Registry.SetValue("HKEY_CURRENT_USER\\SOFTWARE\\Microsoft\\Clipboard", "EnableClipboardHistory", 0, RegistryValueKind.DWord);
+                    Registry.SetValue("HKEY_LOCAL_MACHINE\\SOFTWARE\\Policies\\Microsoft\\Windows\\System", "AllowClipboardHistory", 0, RegistryValueKind.DWord);
+                    Configurator.SetValue("DisableClipboard", 1);
+                }
             }
             else
             {
@@ -269,31 +279,38 @@ namespace Configurator
 
         private void tsDisableFSO_CheckedChanged(object sender, EventArgs e)
         {
-            if (tsDisableFSO.Checked && isFSODisabled == false)
+            if (tsDisableFSO.Checked)
             {
-                Registry.SetValue(@"HKEY_CURRENT_USER\" + gameBarRegistryPath, "ShowStartupPanel", 0, RegistryValueKind.DWord);
-                Registry.SetValue(@"HKEY_CURRENT_USER\" + gameBarRegistryPath, "GamePanelStartupTipIndex", 3, RegistryValueKind.DWord);
-                Registry.SetValue(@"HKEY_CURRENT_USER\" + gameBarRegistryPath, "AllowAutoGameMode", 0, RegistryValueKind.DWord);
-                Registry.SetValue(@"HKEY_CURRENT_USER\" + gameBarRegistryPath, "AutoGameModeEnabled", 0, RegistryValueKind.DWord);
-                Registry.SetValue(@"HKEY_CURRENT_USER\" + gameBarRegistryPath, "UseNexusForGameBarEnabled", 0, RegistryValueKind.DWord);
+                object aVal = Configurator.GetValue("DisableFSO");
+                if (null != aVal)
+                {
+                }
+                else
+                {
+                    Registry.SetValue(@"HKEY_CURRENT_USER\" + gameBarRegistryPath, "ShowStartupPanel", 0, RegistryValueKind.DWord);
+                    Registry.SetValue(@"HKEY_CURRENT_USER\" + gameBarRegistryPath, "GamePanelStartupTipIndex", 3, RegistryValueKind.DWord);
+                    Registry.SetValue(@"HKEY_CURRENT_USER\" + gameBarRegistryPath, "AllowAutoGameMode", 0, RegistryValueKind.DWord);
+                    Registry.SetValue(@"HKEY_CURRENT_USER\" + gameBarRegistryPath, "AutoGameModeEnabled", 0, RegistryValueKind.DWord);
+                    Registry.SetValue(@"HKEY_CURRENT_USER\" + gameBarRegistryPath, "UseNexusForGameBarEnabled", 0, RegistryValueKind.DWord);
 
-                Registry.SetValue(@"HKEY_CURRENT_USER\" + gameConfigStoreRegistryPath, "GameDVR_Enabled", 0, RegistryValueKind.DWord);
-                Registry.SetValue(@"HKEY_CURRENT_USER\" + gameConfigStoreRegistryPath, "GameDVR_FSEBehaviorMode", 2, RegistryValueKind.DWord);
-                Registry.SetValue(@"HKEY_CURRENT_USER\" + gameConfigStoreRegistryPath, "GameDVR_FSEBehavior", 2, RegistryValueKind.DWord);
-                Registry.SetValue(@"HKEY_CURRENT_USER\" + gameConfigStoreRegistryPath, "GameDVR_HonorUserFSEBehaviorMode", 1, RegistryValueKind.DWord);
-                Registry.SetValue(@"HKEY_CURRENT_USER\" + gameConfigStoreRegistryPath, "GameDVR_DXGIHonorFSEWindowsCompatible", 1, RegistryValueKind.DWord);
-                Registry.SetValue(@"HKEY_CURRENT_USER\" + gameConfigStoreRegistryPath, "GameDVR_EFSEFeatureFlags", 0, RegistryValueKind.DWord);
-                Registry.SetValue(@"HKEY_CURRENT_USER\" + gameConfigStoreRegistryPath, "GameDVR_DSEBehavior", 2, RegistryValueKind.DWord);
+                    Registry.SetValue(@"HKEY_CURRENT_USER\" + gameConfigStoreRegistryPath, "GameDVR_Enabled", 0, RegistryValueKind.DWord);
+                    Registry.SetValue(@"HKEY_CURRENT_USER\" + gameConfigStoreRegistryPath, "GameDVR_FSEBehaviorMode", 2, RegistryValueKind.DWord);
+                    Registry.SetValue(@"HKEY_CURRENT_USER\" + gameConfigStoreRegistryPath, "GameDVR_FSEBehavior", 2, RegistryValueKind.DWord);
+                    Registry.SetValue(@"HKEY_CURRENT_USER\" + gameConfigStoreRegistryPath, "GameDVR_HonorUserFSEBehaviorMode", 1, RegistryValueKind.DWord);
+                    Registry.SetValue(@"HKEY_CURRENT_USER\" + gameConfigStoreRegistryPath, "GameDVR_DXGIHonorFSEWindowsCompatible", 1, RegistryValueKind.DWord);
+                    Registry.SetValue(@"HKEY_CURRENT_USER\" + gameConfigStoreRegistryPath, "GameDVR_EFSEFeatureFlags", 0, RegistryValueKind.DWord);
+                    Registry.SetValue(@"HKEY_CURRENT_USER\" + gameConfigStoreRegistryPath, "GameDVR_DSEBehavior", 2, RegistryValueKind.DWord);
 
-                Registry.SetValue(@"HKEY_LOCAL_MACHINE\" + gameDVRRegistryPath, "AllowGameDVR", 0, RegistryValueKind.DWord);
+                    Registry.SetValue(@"HKEY_LOCAL_MACHINE\" + gameDVRRegistryPath, "AllowGameDVR", 0, RegistryValueKind.DWord);
 
-                Registry.SetValue(@"HKEY_CURRENT_USER\" + currentVersionGameDVRRegistryPath, "AppCaptureEnabled", 0, RegistryValueKind.DWord);
+                    Registry.SetValue(@"HKEY_CURRENT_USER\" + currentVersionGameDVRRegistryPath, "AppCaptureEnabled", 0, RegistryValueKind.DWord);
 
-                Registry.SetValue(@"HKEY_LOCAL_MACHINE\" + bcastDVRUserServiceRegistryPath, "Start", 4, RegistryValueKind.DWord);
+                    Registry.SetValue(@"HKEY_LOCAL_MACHINE\" + bcastDVRUserServiceRegistryPath, "Start", 4, RegistryValueKind.DWord);
 
-                Registry.SetValue(@"HKEY_LOCAL_MACHINE\" + sessionManagerEnvironmentRegistryPath, "__COMPAT_LAYER", "~ DISABLEDXMAXIMIZEDWINDOWEDMODE", RegistryValueKind.String);
+                    Registry.SetValue(@"HKEY_LOCAL_MACHINE\" + sessionManagerEnvironmentRegistryPath, "__COMPAT_LAYER", "~ DISABLEDXMAXIMIZEDWINDOWEDMODE", RegistryValueKind.String);
 
-                Configurator.SetValue("DisableFSO", 1);
+                    Configurator.SetValue("DisableFSO", 1);
+                }
             }
             else
             {
@@ -327,12 +344,19 @@ namespace Configurator
 
         private void tsDisablePrefetch_CheckedChanged(object sender, EventArgs e)
         {
-            if (tsDisablePrefetch.Checked && isPrefetchDsabled == false)
+            if (tsDisablePrefetch.Checked)
             {
-                Registry.SetValue("HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\SysMain", "Start", 4, RegistryValueKind.DWord);
-                Registry.SetValue("HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\FontCache", "Start", 4, RegistryValueKind.DWord);
+                object aVal = Configurator.GetValue("DisablePrefetch");
+                if (null != aVal)
+                {
+                }
+                else
+                {
+                    Registry.SetValue("HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\SysMain", "Start", 4, RegistryValueKind.DWord);
+                    Registry.SetValue("HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\FontCache", "Start", 4, RegistryValueKind.DWord);
 
-                Configurator.SetValue("DisablePrefetch", 1);
+                    Configurator.SetValue("DisablePrefetch", 1);
+                }
             }
             else
             {
@@ -345,26 +369,33 @@ namespace Configurator
 
         private void tsDisableHyperV_CheckedChanged(object sender, EventArgs e)
         {
-            if (tsDisableHyperV.Checked && isVBSDsabled == false)
+            if (tsDisableHyperV.Checked)
             {
-                Utils.RunCommand("bcdedit", "/set hypervisorlaunchtype off");
-                Utils.RunCommand("bcdedit", "/set vm no");
-                Utils.RunCommand("bcdedit", "/set vsmlaunchtype Off");
-                Utils.RunCommand("bcdedit", "/set loadoptions DISABLE-LSA-ISO,DISABLE-VBS");
+                object aVal = Configurator.GetValue("DisableHyperV");
+                if (null != aVal)
+                {
+                }
+                else
+                {
+                    Utils.RunCommand("bcdedit", "/set hypervisorlaunchtype off");
+                    Utils.RunCommand("bcdedit", "/set vm no");
+                    Utils.RunCommand("bcdedit", "/set vsmlaunchtype Off");
+                    Utils.RunCommand("bcdedit", "/set loadoptions DISABLE-LSA-ISO,DISABLE-VBS");
 
-                Utils.RunCommand("DISM", "/Online /Disable-Feature:Microsoft-Hyper-V-All /Quiet /NoRestart");
+                    Utils.RunCommand("DISM", "/Online /Disable-Feature:Microsoft-Hyper-V-All /Quiet /NoRestart");
 
-                Registry.SetValue(@"HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\DeviceGuard", "EnableVirtualizationBasedSecurity", 0, RegistryValueKind.DWord);
-                Registry.SetValue(@"HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\DeviceGuard", "RequirePlatformSecurityFeatures", 1, RegistryValueKind.DWord);
-                Registry.SetValue(@"HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\DeviceGuard", "HypervisorEnforcedCodeIntegrity", 0, RegistryValueKind.DWord);
-                Registry.SetValue(@"HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\DeviceGuard", "HVCIMATRequired", 0, RegistryValueKind.DWord);
-                Registry.SetValue(@"HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\DeviceGuard", "LsaCfgFlags", 0, RegistryValueKind.DWord);
-                Registry.SetValue(@"HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\DeviceGuard", "ConfigureSystemGuardLaunch", 0, RegistryValueKind.DWord);
-                Registry.SetValue(@"HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\DeviceGuard", "RequireMicrosoftSignedBootChain", 0, RegistryValueKind.DWord);
-                Registry.SetValue(@"HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\DeviceGuard\Scenarios\HypervisorEnforcedCodeIntegrity", "WasEnabledBy", 0, RegistryValueKind.DWord);
-                Registry.SetValue(@"HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\DeviceGuard\Scenarios\HypervisorEnforcedCodeIntegrity", "Enabled", 0, RegistryValueKind.DWord);
+                    Registry.SetValue(@"HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\DeviceGuard", "EnableVirtualizationBasedSecurity", 0, RegistryValueKind.DWord);
+                    Registry.SetValue(@"HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\DeviceGuard", "RequirePlatformSecurityFeatures", 1, RegistryValueKind.DWord);
+                    Registry.SetValue(@"HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\DeviceGuard", "HypervisorEnforcedCodeIntegrity", 0, RegistryValueKind.DWord);
+                    Registry.SetValue(@"HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\DeviceGuard", "HVCIMATRequired", 0, RegistryValueKind.DWord);
+                    Registry.SetValue(@"HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\DeviceGuard", "LsaCfgFlags", 0, RegistryValueKind.DWord);
+                    Registry.SetValue(@"HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\DeviceGuard", "ConfigureSystemGuardLaunch", 0, RegistryValueKind.DWord);
+                    Registry.SetValue(@"HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\DeviceGuard", "RequireMicrosoftSignedBootChain", 0, RegistryValueKind.DWord);
+                    Registry.SetValue(@"HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\DeviceGuard\Scenarios\HypervisorEnforcedCodeIntegrity", "WasEnabledBy", 0, RegistryValueKind.DWord);
+                    Registry.SetValue(@"HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\DeviceGuard\Scenarios\HypervisorEnforcedCodeIntegrity", "Enabled", 0, RegistryValueKind.DWord);
 
-                Configurator.SetValue("DisableHyperV", 1);
+                    Configurator.SetValue("DisableHyperV", 1);
+                }
             }
             else
             {
@@ -397,10 +428,18 @@ namespace Configurator
 
         private void tsDisableWorkstation_CheckedChanged(object sender, EventArgs e)
         {
-            if (tsDisableWorkstation.Checked && isLanmanDsabled == false)
+            if (tsDisableWorkstation.Checked)
             {
-                WorkstationDiasble();
-                Configurator.SetValue("DisableWorkstation",1);
+                object aVal = Configurator.GetValue("DisableWorkstation");
+                if (null != aVal)
+                {
+                }
+                else
+                {
+                    WorkstationDiasble();
+                    Configurator.SetValue("DisableWorkstation", 1);
+                }
+
             }
             else
             {
@@ -411,13 +450,20 @@ namespace Configurator
 
         private void tsDisableNetworkDiscovery_CheckedChanged(object sender, EventArgs e)
         {
-            if (tsDisableNetworkDiscovery.Checked && isNetworkDiscoveryDsabled == false)
+            if (tsDisableNetworkDiscovery.Checked)
             {
-                WorkstationDiasble();
-                Registry.SetValue("HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\NlaSvc", "Start", 4, RegistryValueKind.DWord);
-                Registry.SetValue("HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\lmhosts", "Start", 4, RegistryValueKind.DWord);
-                Registry.SetValue("HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\netman", "Start", 4, RegistryValueKind.DWord);
-                Configurator.SetValue("DisableNetworkDiscovery",1 );
+                object aVal = Configurator.GetValue("DisableNetworkDiscovery");
+                if (null != aVal)
+                {
+                }
+                else
+                {
+                    WorkstationDiasble();
+                    Registry.SetValue("HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\NlaSvc", "Start", 4, RegistryValueKind.DWord);
+                    Registry.SetValue("HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\lmhosts", "Start", 4, RegistryValueKind.DWord);
+                    Registry.SetValue("HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\netman", "Start", 4, RegistryValueKind.DWord);
+                    Configurator.SetValue("DisableNetworkDiscovery", 1);
+                }
             }
             else
             {
@@ -431,13 +477,21 @@ namespace Configurator
 
         private void tsDisableNotifcations_CheckedChanged(object sender, EventArgs e)
         {
-            if (tsDisableNotifcations.Checked && isNotificationsDsabled == false)
+            if (tsDisableNotifcations.Checked)
             {
-                Registry.SetValue("HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\WpnService", "Start", 4, RegistryValueKind.DWord);
-                Registry.SetValue(@"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\PushNotifications", "ToastEnabled", 0, RegistryValueKind.DWord);
-                Registry.SetValue(@"HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Explorer", "DisableNotificationCenter", 1, RegistryValueKind.DWord);
-                Registry.SetValue(@"HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\userNotificationListener", "Value", "Deny", RegistryValueKind.String);
-                Configurator.SetValue("DisableNotifications", 1);
+                object aVal = Configurator.GetValue("DisableNotifications");
+                if (null != aVal)
+                {
+                }
+                else
+                {
+                    Registry.SetValue("HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\WpnService", "Start", 4, RegistryValueKind.DWord);
+                    Registry.SetValue(@"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\PushNotifications", "ToastEnabled", 0, RegistryValueKind.DWord);
+                    Registry.SetValue(@"HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Explorer", "DisableNotificationCenter", 1, RegistryValueKind.DWord);
+                    Registry.SetValue(@"HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\userNotificationListener", "Value", "Deny", RegistryValueKind.String);
+                    Configurator.SetValue("DisableNotifications", 1);
+                }
+
             }
             else
             {
@@ -451,10 +505,17 @@ namespace Configurator
 
         private void tsDisablePrintSpooler_CheckedChanged(object sender, EventArgs e)
         {
-            if (tsDisablePrintSpooler.Checked && isPrinterDsabled == false)
+            if (tsDisablePrintSpooler.Checked)
             {
-                Registry.SetValue("HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\Spooler", "Start", 4, RegistryValueKind.DWord);
-                Configurator.SetValue("DisablePrinter", 1);
+                object aVal = Configurator.GetValue("DisablePrinter");
+                if (null != aVal)
+                {
+                }
+                else
+                {
+                    Registry.SetValue("HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\Spooler", "Start", 4, RegistryValueKind.DWord);
+                    Configurator.SetValue("DisablePrinter", 1);
+                }
             }
             else
             {
@@ -465,16 +526,24 @@ namespace Configurator
 
         private void tsDisableVPN_CheckedChanged(object sender, EventArgs e)
         {
-            if (tsDisableVPN.Checked && isVPNDsabled == false)
+            if (tsDisableVPN.Checked)
             {
-                Registry.SetValue("HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\IKEEXT", "Start", 4, RegistryValueKind.DWord);
-                Registry.SetValue("HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\WinHttpAutoProxySvc", "Start", 4, RegistryValueKind.DWord);
-                Registry.SetValue("HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\RasMan", "Start", 4, RegistryValueKind.DWord);
-                Registry.SetValue("HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\SstpSvc", "Start", 4, RegistryValueKind.DWord);
-                Registry.SetValue("HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\iphlpsvc", "Start", 4, RegistryValueKind.DWord);
-                Registry.SetValue("HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\NdisVirtualBus", "Start", 4, RegistryValueKind.DWord);
-                Registry.SetValue("HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\Eaphost", "Start", 4, RegistryValueKind.DWord);
-                Configurator.SetValue("DisableVPN", 1);
+                object aVal = Configurator.GetValue("DisableVPN");
+                if (null != aVal)
+                {
+                }
+                else
+                {
+                    Registry.SetValue("HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\IKEEXT", "Start", 4, RegistryValueKind.DWord);
+                    Registry.SetValue("HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\WinHttpAutoProxySvc", "Start", 4, RegistryValueKind.DWord);
+                    Registry.SetValue("HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\RasMan", "Start", 4, RegistryValueKind.DWord);
+                    Registry.SetValue("HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\SstpSvc", "Start", 4, RegistryValueKind.DWord);
+                    Registry.SetValue("HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\iphlpsvc", "Start", 4, RegistryValueKind.DWord);
+                    Registry.SetValue("HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\NdisVirtualBus", "Start", 4, RegistryValueKind.DWord);
+                    Registry.SetValue("HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\Eaphost", "Start", 4, RegistryValueKind.DWord);
+                    Configurator.SetValue("DisableVPN", 1);
+                }
+
             }
             else
             {
@@ -492,13 +561,20 @@ namespace Configurator
 
         private void tsDisableWiFI_CheckedChanged(object sender, EventArgs e)
         {
-            if (tsDisableWiFI.Checked && isWiFIDsabled == false)
+            if (tsDisableWiFI.Checked)
             {
-                Registry.SetValue("HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\WlanSvc", "Start", 4, RegistryValueKind.DWord);
-                Registry.SetValue("HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\vwififlt", "Start", 4, RegistryValueKind.DWord);
-                Registry.SetValue("HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\netprofm", "Start", 4, RegistryValueKind.DWord);
-                Registry.SetValue("HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\NlaSvc  ", "Start", 4, RegistryValueKind.DWord);
-                Configurator.SetValue("DisableWiFi", 1);
+                object aVal = Configurator.GetValue("DisableWiFi");
+                if (null != aVal)
+                {
+                }
+                else
+                {
+                    Registry.SetValue("HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\WlanSvc", "Start", 4, RegistryValueKind.DWord);
+                    Registry.SetValue("HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\vwififlt", "Start", 4, RegistryValueKind.DWord);
+                    Registry.SetValue("HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\netprofm", "Start", 4, RegistryValueKind.DWord);
+                    Registry.SetValue("HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\NlaSvc  ", "Start", 4, RegistryValueKind.DWord);
+                    Configurator.SetValue("DisableWiFi", 1);
+                }
             }
             else
             {
@@ -512,10 +588,17 @@ namespace Configurator
 
         private void tsEnableHAGS_CheckedChanged(object sender, EventArgs e)
         {
-            if (tsEnableHAGS.Checked && isHAGSEnabled == false)
+            if (tsEnableHAGS.Checked)
             {
-                Registry.SetValue("HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Control\\GraphicsDrivers", "HwSchMode", 1, RegistryValueKind.DWord);
-                Configurator.SetValue("EnableHAGS", 1);
+                object aVal = Configurator.GetValue("EnableHAGS");
+                if (null != aVal)
+                {
+                }
+                else
+                {
+                    Registry.SetValue("HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Control\\GraphicsDrivers", "HwSchMode", 1, RegistryValueKind.DWord);
+                    Configurator.SetValue("EnableHAGS", 1);
+                }
             }
             else
             {
@@ -526,10 +609,17 @@ namespace Configurator
 
         private void tsOldAltTab_CheckedChanged(object sender, EventArgs e)
         {
-            if (tsOldAltTab.Checked && isOldAltTab == false)
+            if (tsOldAltTab.Checked)
             {
-                Registry.SetValue("HKEY_CURRENT_USER\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer", "AltTabSettings", 1, RegistryValueKind.DWord);
-                Configurator.SetValue("OldAltTab", 1);
+                object aVal = Configurator.GetValue("OldAltTab");
+                if (null != aVal)
+                {
+                }
+                else
+                {
+                    Registry.SetValue("HKEY_CURRENT_USER\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer", "AltTabSettings", 1, RegistryValueKind.DWord);
+                    Configurator.SetValue("OldAltTab", 1);
+                }
             }
             else
             {
@@ -540,14 +630,21 @@ namespace Configurator
 
         private void tsOldContextMenu_CheckedChanged(object sender, EventArgs e)
         {
-            if (tsOldContextMenu.Checked && isOldContextMenu == false)
+            if (tsOldContextMenu.Checked)
             {
-                Process.Start("regedit.exe", "/s C:\\Program Files\\Configurator\\OldContextMenu.reg");
-                Configurator.SetValue("OldContextMenu", 1);
+                object aVal = Configurator.GetValue("OldContextMenu");
+                if (null != aVal)
+                {
+                }
+                else
+                {
+                    Process.Start("regedit.exe", "/s C:\\Windows\\Modules\\OldContextMenu.reg"); //Change According to your preference
+                    Configurator.SetValue("OldContextMenu", 1);
+                }
             }
             else
             {
-                Process.Start("regedit.exe", "/s C:\\Program Files\\Configurator\\NewContextMenu.reg");
+                Process.Start("regedit.exe", "/s C:\\Windows\\Modules\\NewContextMenu.reg"); //Change According to your preference
                 Configurator.DeleteValue("OldContextMenu");
             }
         }
