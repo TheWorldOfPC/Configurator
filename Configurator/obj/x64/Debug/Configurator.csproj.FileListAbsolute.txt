@@ -24,3 +24,15 @@ C:\Users\Administrator\Documents\GitHub\Configurator\Configurator\obj\x64\Debug\
 C:\Users\Administrator\Documents\GitHub\Configurator\Configurator\obj\x64\Debug\Configurator.csproj.CopyComplete
 C:\Users\Administrator\Documents\GitHub\Configurator\Configurator\obj\x64\Debug\Configurator.exe
 C:\Users\Administrator\Documents\GitHub\Configurator\Configurator\obj\x64\Debug\Configurator.pdb
+C:\Users\Administrator\Downloads\Configurator-main(1)\Configurator-main\Configurator\bin\x64\Debug\Configurator.exe.config
+C:\Users\Administrator\Downloads\Configurator-main(1)\Configurator-main\Configurator\bin\x64\Debug\Configurator.exe
+C:\Users\Administrator\Downloads\Configurator-main(1)\Configurator-main\Configurator\bin\x64\Debug\Configurator.pdb
+C:\Users\Administrator\Downloads\Configurator-main(1)\Configurator-main\Configurator\bin\x64\Debug\Guna.UI2.dll
+C:\Users\Administrator\Downloads\Configurator-main(1)\Configurator-main\Configurator\obj\x64\Debug\Configurator.csproj.AssemblyReference.cache
+C:\Users\Administrator\Downloads\Configurator-main(1)\Configurator-main\Configurator\obj\x64\Debug\Configurator.Main.resources
+C:\Users\Administrator\Downloads\Configurator-main(1)\Configurator-main\Configurator\obj\x64\Debug\Configurator.Properties.Resources.resources
+C:\Users\Administrator\Downloads\Configurator-main(1)\Configurator-main\Configurator\obj\x64\Debug\Configurator.csproj.GenerateResource.cache
+C:\Users\Administrator\Downloads\Configurator-main(1)\Configurator-main\Configurator\obj\x64\Debug\Configurator.csproj.CoreCompileInputs.cache
+C:\Users\Administrator\Downloads\Configurator-main(1)\Configurator-main\Configurator\obj\x64\Debug\Configurator.csproj.CopyComplete
+C:\Users\Administrator\Downloads\Configurator-main(1)\Configurator-main\Configurator\obj\x64\Debug\Configurator.exe
+C:\Users\Administrator\Downloads\Configurator-main(1)\Configurator-main\Configurator\obj\x64\Debug\Configurator.pdb

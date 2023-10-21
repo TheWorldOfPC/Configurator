@@ -41,22 +41,16 @@ namespace Configurator
         {
             RegistryKey key = Configurator;
 
-            Utils.CheckRegistryValueAndSetToggleSwitch(key, "AnimationsDisabled", tsDisableAnimation);
-            Utils.CheckRegistryValueAndSetToggleSwitch(key, "DisableBackgroundApps", tsDisableBackgroundApps);
             Utils.CheckRegistryValueAndSetToggleSwitch(key, "DisableBluetooth", tsDisableBluetooth);
-            Utils.CheckRegistryValueAndSetToggleSwitch(key, "DisableClipboard", tsDisableClipboard);
             Utils.CheckRegistryValueAndSetToggleSwitch(key, "DisableFSO", tsDisableFSO);
             Utils.CheckRegistryValueAndSetToggleSwitch(key, "DisablePrefetch", tsDisablePrefetch);
             Utils.CheckRegistryValueAndSetToggleSwitch(key, "DisableHyperV", tsDisableHyperV);
             Utils.CheckRegistryValueAndSetToggleSwitch(key, "DisableWorkstation", tsDisableWorkstation);
             Utils.CheckRegistryValueAndSetToggleSwitch(key, "DisableNetworkDiscovery", tsDisableNetworkDiscovery);
-            Utils.CheckRegistryValueAndSetToggleSwitch(key, "DisableNotifications", tsDisableNotifcations);
             Utils.CheckRegistryValueAndSetToggleSwitch(key, "DisablePrinter", tsDisablePrintSpooler);
             Utils.CheckRegistryValueAndSetToggleSwitch(key, "DisableVPN", tsDisableVPN);
-            Utils.CheckRegistryValueAndSetToggleSwitch(key, "DisableWiFi", tsDisableClipboard);
+            Utils.CheckRegistryValueAndSetToggleSwitch(key, "DisableWiFi", tsDisableWiFI);
             Utils.CheckRegistryValueAndSetToggleSwitch(key, "EnableHAGS", tsEnableHAGS);
-            Utils.CheckRegistryValueAndSetToggleSwitch(key, "OldAltTab", tsOldAltTab);
-            Utils.CheckRegistryValueAndSetToggleSwitch(key, "OldContextMenu", tsOldContextMenu);
 
             OSName.Text = Utils.GetOS();
             OSArch.Text = Utils.GetBitness();
@@ -66,8 +60,7 @@ namespace Configurator
 
             if (OSName.Text.Contains("Windows 11"))
             {
-                label10.Visible = true;
-                tsOldContextMenu.Visible = true;
+
             }
         }
 
@@ -84,22 +77,6 @@ namespace Configurator
         }
 
         //please wait
-        private async void PleaseWait()
-        {
-            pleaseWait.Visible = true;
-            await Task.Delay(1000);
-            pleaseWait.Text = pleaseWait.Text + ".";
-            await Task.Delay(1000);
-            pleaseWait.Text = pleaseWait.Text + ".";
-            await Task.Delay(1000);
-            pleaseWait.Text = pleaseWait.Text + ".";
-        }
-
-        private void PleaseDontWait()
-        {
-            pleaseWait.Text = "Please Wait";
-            pleaseWait.Visible = false;
-        }
         //Workstation Services
         private void WorkstationEnable()
         {
@@ -123,81 +100,6 @@ namespace Configurator
         }
 
         //Checkboxes
-        private void tsDisableAnimation_CheckedChanged(object sender, EventArgs e)
-        {
-            if (tsDisableAnimation.Checked)
-            {
-                object aVal = Configurator.GetValue("AnimationsDisabled");
-                if (null != aVal)
-                {
-                }
-                else
-                {
-                    Registry.SetValue(@"HKEY_LOCAL_MACHINE\" + dwmRegistryPath, "DisallowAnimations", 1, RegistryValueKind.DWord);
-                    Registry.SetValue(@"HKEY_CURRENT_USER\" + windowMetricsRegistryPath, "MinAnimate", 0, RegistryValueKind.DWord);
-                    Registry.SetValue(@"HKEY_CURRENT_USER\" + explorerAdvancedRegistryPath, "TaskbarAnimations", 0, RegistryValueKind.DWord);
-                    Registry.SetValue(@"HKEY_CURRENT_USER\" + visualEffectsRegistryPath, "VisualFXSetting", 3, RegistryValueKind.DWord);
-
-                    byte[] userPreferencesMaskData = { 0x90, 0x12, 0x03, 0x80, 0x10, 0x00, 0x00, 0x00 };
-                    Registry.SetValue(@"HKEY_CURRENT_USER\" + desktopRegistryPath, "UserPreferencesMask", userPreferencesMaskData, RegistryValueKind.Binary);
-
-                    Configurator.SetValue("AnimationsDisabled", 1);
-                }
-            }
-            else
-            {
-                try
-                {
-                    RegistryKey localMachineKey = Registry.LocalMachine.OpenSubKey(dwmRegistryPath, true);
-                    if (localMachineKey != null)
-                    {
-                        localMachineKey.DeleteValue("DisallowAnimations", false);
-                        localMachineKey.Close();
-                    }
-
-                    RegistryKey currentUserKey = Registry.CurrentUser.OpenSubKey(windowMetricsRegistryPath, true);
-                    if (currentUserKey != null)
-                    {
-                        currentUserKey.DeleteValue("MinAnimate", false);
-                        currentUserKey.Close();
-                    }
-
-                    Registry.SetValue(@"HKEY_CURRENT_USER\" + explorerAdvancedRegistryPath, "TaskbarAnimations", 1, RegistryValueKind.DWord);
-                    Registry.SetValue(@"HKEY_CURRENT_USER\" + visualEffectsRegistryPath, "VisualFXSetting", 1, RegistryValueKind.DWord);
-
-                    byte[] userPreferencesMaskData = { 0x9e, 0x3e, 0x07, 0x80, 0x12, 0x00, 0x00, 0x00 };
-                    Registry.SetValue(@"HKEY_CURRENT_USER\" + desktopRegistryPath, "UserPreferencesMask", userPreferencesMaskData, RegistryValueKind.Binary);
-                }
-                catch (Exception)
-                { }
-                Configurator.DeleteValue("AnimationsDisabled");
-            }
-        }
-
-        private void tsDisableBackgroundApps_CheckedChanged(object sender, EventArgs e)
-        {
-            if (tsDisableBackgroundApps.Checked)
-            {
-                object aVal = Configurator.GetValue("DisableBackgroundApps");
-                if (null != aVal)
-                {
-                }
-                else
-                {
-                    Registry.SetValue(@"HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\AppPrivacy", "LetAppsRunInBackground", 2, RegistryValueKind.DWord);
-                    Registry.SetValue($@"HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\BackgroundAccessApplications", "GlobalUserDisabled", 1, RegistryValueKind.DWord);
-                    Registry.SetValue($@"HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Search", "BackgroundAppGlobalToggle", 0, RegistryValueKind.DWord);
-                    Configurator.SetValue("DisableBackgroundApps", 1);
-                }
-            }
-            else
-            {
-                Registry.SetValue(@"HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\AppPrivacy", "LetAppsRunInBackground", 1, RegistryValueKind.DWord);
-                Registry.SetValue($@"HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\BackgroundAccessApplications", "GlobalUserDisabled", 0, RegistryValueKind.DWord);
-                Registry.SetValue($@"HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Search", "BackgroundAppGlobalToggle", 1, RegistryValueKind.DWord);
-                Configurator.DeleteValue("DisableBackgroundApps");
-            }
-        }
 
         private void tsDisableBluetooth_CheckedChanged(object sender, EventArgs e)
         {
@@ -217,63 +119,6 @@ namespace Configurator
             {
                 Registry.SetValue("HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\BthAvctpSvc", "Start", 3, RegistryValueKind.DWord);
                 Configurator.DeleteValue("DisableBluetooth");
-            }
-        }
-
-        private void tsDisableClipboard_CheckedChanged(object sender, EventArgs e)
-        {
-            if (tsDisableClipboard.Checked)
-            {
-                object aVal = Configurator.GetValue("DisableClipboard");
-                if (null != aVal)
-                {
-                }
-                else
-                {
-                    using (RegistryKey servicesKey = Registry.LocalMachine.OpenSubKey("SYSTEM\\CurrentControlSet\\Services", true))
-                    {
-                        if (servicesKey != null)
-                        {
-                            foreach (string subkeyName in servicesKey.GetSubKeyNames())
-                            {
-                                if (subkeyName.Contains("cbdhsvc"))
-                                {
-                                    using (RegistryKey subkey = servicesKey.OpenSubKey(subkeyName, true))
-                                    {
-                                        subkey?.SetValue("Start", 4, RegistryValueKind.DWord);
-                                    }
-                                }
-                            }
-                        }
-                    }
-
-                    Registry.SetValue("HKEY_CURRENT_USER\\SOFTWARE\\Microsoft\\Clipboard", "EnableClipboardHistory", 0, RegistryValueKind.DWord);
-                    Registry.SetValue("HKEY_LOCAL_MACHINE\\SOFTWARE\\Policies\\Microsoft\\Windows\\System", "AllowClipboardHistory", 0, RegistryValueKind.DWord);
-                    Configurator.SetValue("DisableClipboard", 1);
-                }
-            }
-            else
-            {
-                using (RegistryKey servicesKey = Registry.LocalMachine.OpenSubKey("SYSTEM\\CurrentControlSet\\Services", true))
-                {
-                    if (servicesKey != null)
-                    {
-                        foreach (string subkeyName in servicesKey.GetSubKeyNames())
-                        {
-                            if (subkeyName.Contains("cbdhsvc"))
-                            {
-                                using (RegistryKey subkey = servicesKey.OpenSubKey(subkeyName, true))
-                                {
-                                    subkey?.SetValue("Start", 2, RegistryValueKind.DWord);
-                                }
-                            }
-                        }
-                    }
-                }
-
-                Registry.SetValue("HKEY_CURRENT_USER\\SOFTWARE\\Microsoft\\Clipboard", "EnableClipboardHistory", 1, RegistryValueKind.DWord);
-                Registry.SetValue("HKEY_LOCAL_MACHINE\\SOFTWARE\\Policies\\Microsoft\\Windows\\System", "AllowClipboardHistory", 1, RegistryValueKind.DWord);
-                Configurator.DeleteValue("DisableClipboard");
             }
         }
 
@@ -474,35 +319,6 @@ namespace Configurator
                 Configurator.DeleteValue("DisableNetworkDiscovery");
             }
         }
-
-        private void tsDisableNotifcations_CheckedChanged(object sender, EventArgs e)
-        {
-            if (tsDisableNotifcations.Checked)
-            {
-                object aVal = Configurator.GetValue("DisableNotifications");
-                if (null != aVal)
-                {
-                }
-                else
-                {
-                    Registry.SetValue("HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\WpnService", "Start", 4, RegistryValueKind.DWord);
-                    Registry.SetValue(@"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\PushNotifications", "ToastEnabled", 0, RegistryValueKind.DWord);
-                    Registry.SetValue(@"HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Explorer", "DisableNotificationCenter", 1, RegistryValueKind.DWord);
-                    Registry.SetValue(@"HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\userNotificationListener", "Value", "Deny", RegistryValueKind.String);
-                    Configurator.SetValue("DisableNotifications", 1);
-                }
-
-            }
-            else
-            {
-                Registry.SetValue("HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\WpnService", "Start", 2, RegistryValueKind.DWord);
-                Registry.SetValue(@"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\PushNotifications", "ToastEnabled", 1, RegistryValueKind.DWord);
-                Registry.SetValue(@"HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Explorer", "DisableNotificationCenter", 0, RegistryValueKind.DWord);
-                Registry.SetValue(@"HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\userNotificationListener", "Value", "Allow", RegistryValueKind.String);
-                Configurator.DeleteValue("DisableNotifications");
-            }
-        }
-
         private void tsDisablePrintSpooler_CheckedChanged(object sender, EventArgs e)
         {
             if (tsDisablePrintSpooler.Checked)
@@ -606,218 +422,112 @@ namespace Configurator
                 Configurator.DeleteValue("EnableHAGS");
             }
         }
-
-        private void tsOldAltTab_CheckedChanged(object sender, EventArgs e)
-        {
-            if (tsOldAltTab.Checked)
-            {
-                object aVal = Configurator.GetValue("OldAltTab");
-                if (null != aVal)
-                {
-                }
-                else
-                {
-                    Registry.SetValue("HKEY_CURRENT_USER\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer", "AltTabSettings", 1, RegistryValueKind.DWord);
-                    Configurator.SetValue("OldAltTab", 1);
-                }
-            }
-            else
-            {
-                Registry.SetValue("HKEY_CURRENT_USER\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer", "AltTabSettings", 0, RegistryValueKind.DWord);
-                Configurator.DeleteValue("OldAltTab");
-            }
-        }
-
-        private void tsOldContextMenu_CheckedChanged(object sender, EventArgs e)
-        {
-            if (tsOldContextMenu.Checked)
-            {
-                object aVal = Configurator.GetValue("OldContextMenu");
-                if (null != aVal)
-                {
-                }
-                else
-                {
-                    Process.Start("regedit.exe", "/s C:\\Windows\\Modules\\OldContextMenu.reg"); //Change According to your preference
-                    Configurator.SetValue("OldContextMenu", 1);
-                }
-            }
-            else
-            {
-                Process.Start("regedit.exe", "/s C:\\Windows\\Modules\\NewContextMenu.reg"); //Change According to your preference
-                Configurator.DeleteValue("OldContextMenu");
-            }
-        }
-
         private void btnBrave_Click(object sender, EventArgs e)
         {
-            PleaseWait();
             if (Utils.DownloadFile(
 "https://brave-browser-downloads.s3.brave.com/latest/BraveBrowserSetup.exe",
 DownloadsFolder + "\\BraveBrowserSetup.exe"
 ) == true)
             {
-                PleaseDontWait();
                 Process.Start(DownloadsFolder + "\\BraveBrowserSetup.exe");
             }
         }
 
         private void btnChrome_Click(object sender, EventArgs e)
         {
-            PleaseWait();
             if (Utils.DownloadFile(
 "http://dl.google.com/chrome/install/chrome_installer.exe",
 DownloadsFolder + "\\chrome_installer.exe"
 ) == true)
             {
-                PleaseDontWait();
                 Process.Start(DownloadsFolder + "\\chrome_installer.exe");
             }
         }
 
         private void btnEdge_Click(object sender, EventArgs e)
         {
-            PleaseWait();
+
             if (Utils.DownloadFile(
-"https://cdn.discordapp.com/attachments/901077907043156009/1151491922444165120/MicrosoftEdgeSetup.exe",
-DownloadsFolder + "\\MicrosoftEdgeSetup.exe"
+"https://cdn.cloudflare.steamstatic.com/client/installer/SteamSetup.exe",
+DownloadsFolder + "\\SteamSetup.exe"
 ) == true)
             {
-                PleaseDontWait();
-                Process.Start(DownloadsFolder + "\\MicrosoftEdgeSetup.exe");
+    
+                Process.Start(DownloadsFolder + "\\SteamSetup.exe");
             }
         }
 
         private void btnFirefox_Click(object sender, EventArgs e)
         {
-            PleaseWait();
+
             if (Utils.DownloadFile(
-"https://mzl.la/3o6YriV",
+"https://download.mozilla.org/?product=firefox-stub&os=win&lang=en-US",
 DownloadsFolder + "\\MozillaFirefoxSetup.exe"
 ) == true)
             {
-                PleaseDontWait();
+    
                 Process.Start(DownloadsFolder + "\\MozillaFirefoxSetup.exe");
             }
         }
+        private void guna2Button2_Click(object sender, EventArgs e)
+        {
+            if (Utils.DownloadFile(
+"https://net.geo.opera.com/opera/stable/windows?utm_tryagain=yes&utm_source=google&utm_medium=ose&utm_campaign=(none)&http_referrer=https%3A%2F%2Fwww.google.com%2F&utm_site=opera_com&&utm_lastpage=opera.com/",
+DownloadsFolder + "\\OperaSetup.exe"
+) == true)
+            {
+                Process.Start(DownloadsFolder + "\\OperaSetup.exe");
+            }
+        }
+        private void guna2Button3_Click(object sender, EventArgs e)
+        {
+    
+                if (Utils.DownloadFile(
+    "https://github.com/Vencord/Installer/releases/latest/download/VencordInstaller.exe",
+    DownloadsFolder + "\\Vencord.exe"
+    ) == true)
+                {
+        
+                    Process.Start(DownloadsFolder + "\\Vencord.exe");
+                } 
+        }
+        private void guna2Button1_Click(object sender, EventArgs e)
+        {
 
+        }
         private void btnOperaGX_Click(object sender, EventArgs e)
         {
-            PleaseWait();
+
             if (Utils.DownloadFile(
 "https://cdn.discordapp.com/attachments/905447438238773259/934389036800409660/OperaGXSetup.exe",
 DownloadsFolder + "\\OperaGXSetup.exe"
 ) == true)
             {
-                PleaseDontWait();
+    
                 Process.Start(DownloadsFolder + "\\OperaGXSetup.exe");
             }
         }
 
-        private async void btnDriverBooster_Click(object sender, EventArgs e)
+        private void guna2Button1_Click_1(object sender, EventArgs e)
         {
-            string url = "https://nexus-toolkit.epubg691.workers.dev/?file=/Toolkit/17th%20June/IObit%20Driver%20Booster%20Pro%2010.5.0.139%20Multilingual.7z";
-            string filename = DownloadsFolder + "\\IObit Driver Booster Pro.7z";
-
-            PleaseWait();
-
-            bool downloadSuccess = await Utils.DownloadFileAsync(url, filename);
-
-            PleaseDontWait();
-
-            if (downloadSuccess)
+            if (Utils.DownloadFile(
+"https://discord.com/api/downloads/distributions/app/installers/latest?channel=stable&platform=win&arch=x86",
+DownloadsFolder + "\\DiscordSetup.exe"
+) == true)
             {
-                Process.Start("explorer.exe", DownloadsFolder);
-            }
-            else
-            {
-                MessageDialog.Show(null, "", "Download Failed!", MessageDialogButtons.OK, MessageDialogIcon.Error, MessageDialogStyle.Dark);
+
+                Process.Start(DownloadsFolder + "\\DiscordSetup.exe");
             }
         }
 
-        private async void btnSDIO_Click(object sender, EventArgs e)
+        private void label1_Click(object sender, EventArgs e)
         {
-
-            string url = "https://cdn.discordapp.com/attachments/901077907043156009/1152589193869004873/SDI_R2309.zip";
-            string filename = DownloadsFolder + "\\SDI_R2309.zip";
-
-            PleaseWait();
-
-            bool downloadSuccess = await Utils.DownloadFileAsync(url, filename);
-
-            PleaseDontWait();
-
-            if (downloadSuccess)
-            {
-                Process.Start("explorer.exe", DownloadsFolder);
-            }
-            else
-            {
-                MessageDialog.Show(null, "", "Download Failed!", MessageDialogButtons.OK, MessageDialogIcon.Error, MessageDialogStyle.Dark);
-            }
+            Process.Start("https://github.com/TheWorldOfPC/Configurator");
         }
 
-        private async void btnNVCleanstall_Click(object sender, EventArgs e)
+        private void label10_Click(object sender, EventArgs e)
         {
-            string url = "https://cdn.discordapp.com/attachments/901077907043156009/1152589609218351104/NVCleanstall_1.16.0.exe";
-            string filename = DownloadsFolder + "\\NVCleanstall_1.16.0.zip";
-            
-            PleaseWait();
-
-            bool downloadSuccess = await Utils.DownloadFileAsync(url, filename);
-
-            PleaseDontWait();
-
-            if (downloadSuccess)
-            {
-                Process.Start("explorer.exe", DownloadsFolder);
-            }
-            else
-            {
-                MessageDialog.Show(null, "", "Download Failed!", MessageDialogButtons.OK, MessageDialogIcon.Error, MessageDialogStyle.Dark);
-            }
-        }
-
-        private async void btnRSS_Click(object sender, EventArgs e)
-        {
-            string url = "https://cdn.discordapp.com/attachments/901077907043156009/1152589910532948049/RadeonSoftwareSlimmer_1.10.1_net48.zip";
-            string filename = DownloadsFolder + "\\RadeonSoftwareSlimmer_1.10.1_net48.zip";
-
-            PleaseWait();
-
-            bool downloadSuccess = await Utils.DownloadFileAsync(url, filename);
-
-            PleaseDontWait();
-
-            if (downloadSuccess)
-            {
-                Process.Start("explorer.exe", DownloadsFolder);
-            }
-            else
-            {
-                MessageDialog.Show(null, "", "Download Failed!", MessageDialogButtons.OK, MessageDialogIcon.Error, MessageDialogStyle.Dark);
-            }
-        }
-
-        private async void btnNVS_Click(object sender, EventArgs e)
-        {
-            string url = "https://cdn.discordapp.com/attachments/901077907043156009/1152590163717926922/Guru3D.com-NVSlimmer.zip";
-            string filename = DownloadsFolder + "\\NVSlimmer.zip";
-
-            PleaseWait();
-
-            bool downloadSuccess = await Utils.DownloadFileAsync(url, filename);
-            
-            PleaseDontWait();
-
-            if (downloadSuccess)
-            {
-                Process.Start("explorer.exe", DownloadsFolder);
-            }
-            else
-            {
-                MessageDialog.Show(null, "", "Download Failed!", MessageDialogButtons.OK, MessageDialogIcon.Error, MessageDialogStyle.Dark);
-            }
+            Process.Start("https://github.com/TheWorldOfPC/Configurator");
         }
     }
 }
