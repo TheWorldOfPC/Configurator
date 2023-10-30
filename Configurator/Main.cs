@@ -56,12 +56,6 @@ namespace Configurator
             OSArch.Text = Utils.GetBitness();
             Welcome.Text = "Welcome " + Environment.UserName;
 
-            //Show Tweak if the OS is Windows 11
-
-            if (OSName.Text.Contains("Windows 11"))
-            {
-
-            }
         }
 
         private void GetOSInfo()
@@ -387,6 +381,7 @@ namespace Configurator
                 {
                     Registry.SetValue("HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\WlanSvc", "Start", 4, RegistryValueKind.DWord);
                     Registry.SetValue("HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\vwififlt", "Start", 4, RegistryValueKind.DWord);
+                    Registry.SetValue("HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\netprofm", "Start", 4, RegistryValueKind.DWord);
                     Registry.SetValue("HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\NlaSvc  ", "Start", 4, RegistryValueKind.DWord);
                     Configurator.SetValue("DisableWiFi", 1);
                 }
@@ -395,10 +390,16 @@ namespace Configurator
             {
                 Registry.SetValue("HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\WlanSvc", "Start", 2, RegistryValueKind.DWord);
                 Registry.SetValue("HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\vwififlt", "Start", 1, RegistryValueKind.DWord);
+                Registry.SetValue("HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\netprofm", "Start", 3, RegistryValueKind.DWord);
                 Registry.SetValue("HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\NlaSvc  ", "Start", 2, RegistryValueKind.DWord);
                 Configurator.DeleteValue("DisableWiFi");
             }
-        }
+            if (OSName.Text.Contains("Windows 11"))
+            {
+                Registry.SetValue("HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\netprofm", "Start", 3, RegistryValueKind.DWord);
+            }
+ 
+    }
 
         private void tsEnableHAGS_CheckedChanged(object sender, EventArgs e)
         {
