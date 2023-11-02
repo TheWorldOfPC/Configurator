@@ -170,6 +170,10 @@
             // 
             // tabPage3
             // 
+            this.tabPage3.Location = new System.Drawing.Point(0, 0);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Size = new System.Drawing.Size(200, 100);
+            this.tabPage3.TabIndex = 0;
             // 
             // tabPage2
             // 
@@ -508,6 +512,7 @@
             this.label12.Size = new System.Drawing.Size(103, 25);
             this.label12.TabIndex = 18;
             this.label12.Text = "Disable WiFi";
+            this.label12.Click += new System.EventHandler(this.label12_Click);
             // 
             // label2
             // 

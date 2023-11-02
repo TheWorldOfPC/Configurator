@@ -1,0 +1,12 @@
+C:\Users\Administrator\Documents\GitHub\SapphireTool\Configurator\bin\Release\Configurator.exe.config
+C:\Users\Administrator\Documents\GitHub\SapphireTool\Configurator\bin\Release\Configurator.exe
+C:\Users\Administrator\Documents\GitHub\SapphireTool\Configurator\bin\Release\Configurator.pdb
+C:\Users\Administrator\Documents\GitHub\SapphireTool\Configurator\bin\Release\Guna.UI2.dll
+C:\Users\Administrator\Documents\GitHub\SapphireTool\Configurator\obj\Release\Configurator.csproj.AssemblyReference.cache
+C:\Users\Administrator\Documents\GitHub\SapphireTool\Configurator\obj\Release\Configurator.Main.resources
+C:\Users\Administrator\Documents\GitHub\SapphireTool\Configurator\obj\Release\Configurator.Properties.Resources.resources
+C:\Users\Administrator\Documents\GitHub\SapphireTool\Configurator\obj\Release\Configurator.csproj.GenerateResource.cache
+C:\Users\Administrator\Documents\GitHub\SapphireTool\Configurator\obj\Release\Configurator.csproj.CoreCompileInputs.cache
+C:\Users\Administrator\Documents\GitHub\SapphireTool\Configurator\obj\Release\Configurator.csproj.CopyComplete
+C:\Users\Administrator\Documents\GitHub\SapphireTool\Configurator\obj\Release\Configurator.exe
+C:\Users\Administrator\Documents\GitHub\SapphireTool\Configurator\obj\Release\Configurator.pdb

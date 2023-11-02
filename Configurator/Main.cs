@@ -383,6 +383,10 @@ namespace Configurator
                     Registry.SetValue("HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\vwififlt", "Start", 4, RegistryValueKind.DWord);
                     Registry.SetValue("HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\netprofm", "Start", 4, RegistryValueKind.DWord);
                     Registry.SetValue("HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\NlaSvc  ", "Start", 4, RegistryValueKind.DWord);
+                    if (OSName.Text.Contains("Windows 11"))
+                    {
+                        Registry.SetValue("HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\netprofm", "Start", 3, RegistryValueKind.DWord);
+                    }
                     Configurator.SetValue("DisableWiFi", 1);
                 }
             }
@@ -394,11 +398,6 @@ namespace Configurator
                 Registry.SetValue("HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\NlaSvc  ", "Start", 2, RegistryValueKind.DWord);
                 Configurator.DeleteValue("DisableWiFi");
             }
-            if (OSName.Text.Contains("Windows 11"))
-            {
-                Registry.SetValue("HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\netprofm", "Start", 3, RegistryValueKind.DWord);
-            }
- 
     }
 
         private void tsEnableHAGS_CheckedChanged(object sender, EventArgs e)
@@ -527,6 +526,11 @@ DownloadsFolder + "\\DiscordSetup.exe"
         private void label10_Click(object sender, EventArgs e)
         {
             Process.Start("https://github.com/TheWorldOfPC/Configurator");
+        }
+
+        private void label12_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
