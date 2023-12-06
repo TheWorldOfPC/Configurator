@@ -50,19 +50,23 @@
             this.btnChrome = new Guna.UI2.WinForms.Guna2Button();
             this.btnBrave = new Guna.UI2.WinForms.Guna2Button();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.tsDisableMitigations = new Guna.UI2.WinForms.Guna2ToggleSwitch();
+            this.label8 = new System.Windows.Forms.Label();
+            this.tsDisableMPO = new Guna.UI2.WinForms.Guna2ToggleSwitch();
+            this.label7 = new System.Windows.Forms.Label();
+            this.tsDisablePreemption = new Guna.UI2.WinForms.Guna2ToggleSwitch();
             this.label1 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
-            this.tsDisableWorkstation = new Guna.UI2.WinForms.Guna2ToggleSwitch();
             this.tsEnableHAGS = new Guna.UI2.WinForms.Guna2ToggleSwitch();
             this.tsDisablePrefetch = new Guna.UI2.WinForms.Guna2ToggleSwitch();
             this.tsDisableHyperV = new Guna.UI2.WinForms.Guna2ToggleSwitch();
@@ -71,8 +75,10 @@
             this.tsDisablePrintSpooler = new Guna.UI2.WinForms.Guna2ToggleSwitch();
             this.tsDisableBluetooth = new Guna.UI2.WinForms.Guna2ToggleSwitch();
             this.tsDisableVPN = new Guna.UI2.WinForms.Guna2ToggleSwitch();
-            this.tsDisableNetworkDiscovery = new Guna.UI2.WinForms.Guna2ToggleSwitch();
             this.guna2TabControl1 = new Guna.UI2.WinForms.Guna2TabControl();
+            this.guna2Button4 = new Guna.UI2.WinForms.Guna2Button();
+            this.guna2Button5 = new Guna.UI2.WinForms.Guna2Button();
+            this.guna2Button6 = new Guna.UI2.WinForms.Guna2Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.tabPage2.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -150,9 +156,9 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(2, 3);
+            this.pictureBox1.Location = new System.Drawing.Point(2, 2);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(130, 96);
+            this.pictureBox1.Size = new System.Drawing.Size(130, 97);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 51;
             this.pictureBox1.TabStop = false;
@@ -178,6 +184,9 @@
             // tabPage2
             // 
             this.tabPage2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(26)))), ((int)(((byte)(38)))));
+            this.tabPage2.Controls.Add(this.guna2Button6);
+            this.tabPage2.Controls.Add(this.guna2Button5);
+            this.tabPage2.Controls.Add(this.guna2Button4);
             this.tabPage2.Controls.Add(this.label10);
             this.tabPage2.Controls.Add(this.guna2Button3);
             this.tabPage2.Controls.Add(this.guna2Button2);
@@ -385,19 +394,23 @@
             // tabPage1
             // 
             this.tabPage1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(26)))), ((int)(((byte)(38)))));
+            this.tabPage1.Controls.Add(this.label13);
+            this.tabPage1.Controls.Add(this.label11);
+            this.tabPage1.Controls.Add(this.tsDisableMitigations);
+            this.tabPage1.Controls.Add(this.label8);
+            this.tabPage1.Controls.Add(this.tsDisableMPO);
+            this.tabPage1.Controls.Add(this.label7);
+            this.tabPage1.Controls.Add(this.tsDisablePreemption);
             this.tabPage1.Controls.Add(this.label1);
             this.tabPage1.Controls.Add(this.label16);
-            this.tabPage1.Controls.Add(this.label8);
             this.tabPage1.Controls.Add(this.label15);
             this.tabPage1.Controls.Add(this.label3);
-            this.tabPage1.Controls.Add(this.label14);
             this.tabPage1.Controls.Add(this.label6);
             this.tabPage1.Controls.Add(this.label5);
             this.tabPage1.Controls.Add(this.label12);
             this.tabPage1.Controls.Add(this.label2);
             this.tabPage1.Controls.Add(this.label4);
             this.tabPage1.Controls.Add(this.label9);
-            this.tabPage1.Controls.Add(this.tsDisableWorkstation);
             this.tabPage1.Controls.Add(this.tsEnableHAGS);
             this.tabPage1.Controls.Add(this.tsDisablePrefetch);
             this.tabPage1.Controls.Add(this.tsDisableHyperV);
@@ -406,13 +419,103 @@
             this.tabPage1.Controls.Add(this.tsDisablePrintSpooler);
             this.tabPage1.Controls.Add(this.tsDisableBluetooth);
             this.tabPage1.Controls.Add(this.tsDisableVPN);
-            this.tabPage1.Controls.Add(this.tsDisableNetworkDiscovery);
             this.tabPage1.Location = new System.Drawing.Point(4, 44);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage1.Size = new System.Drawing.Size(1049, 490);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Configure";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Josefin Sans", 12F);
+            this.label13.ForeColor = System.Drawing.Color.White;
+            this.label13.Location = new System.Drawing.Point(118, 410);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(153, 25);
+            this.label13.TabIndex = 58;
+            this.label13.Text = "Disable Mitigations";
+            // 
+            // label11
+            // 
+            this.label11.Location = new System.Drawing.Point(0, 0);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(100, 23);
+            this.label11.TabIndex = 0;
+            // 
+            // tsDisableMitigations
+            // 
+            this.tsDisableMitigations.Animated = true;
+            this.tsDisableMitigations.CheckedState.BorderColor = System.Drawing.Color.BlueViolet;
+            this.tsDisableMitigations.CheckedState.FillColor = System.Drawing.Color.BlueViolet;
+            this.tsDisableMitigations.CheckedState.InnerBorderColor = System.Drawing.Color.White;
+            this.tsDisableMitigations.CheckedState.InnerColor = System.Drawing.Color.White;
+            this.tsDisableMitigations.Location = new System.Drawing.Point(64, 414);
+            this.tsDisableMitigations.Name = "tsDisableMitigations";
+            this.tsDisableMitigations.Size = new System.Drawing.Size(48, 21);
+            this.tsDisableMitigations.TabIndex = 57;
+            this.tsDisableMitigations.UncheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
+            this.tsDisableMitigations.UncheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
+            this.tsDisableMitigations.UncheckedState.InnerBorderColor = System.Drawing.Color.White;
+            this.tsDisableMitigations.UncheckedState.InnerColor = System.Drawing.Color.White;
+            this.tsDisableMitigations.CheckedChanged += new System.EventHandler(this.tsDisableMitigations_CheckedChange);
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Josefin Sans", 12F);
+            this.label8.ForeColor = System.Drawing.Color.White;
+            this.label8.Location = new System.Drawing.Point(639, 145);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(210, 25);
+            this.label8.TabIndex = 56;
+            this.label8.Text = "Disable Multi-Plane overlay";
+            // 
+            // tsDisableMPO
+            // 
+            this.tsDisableMPO.Animated = true;
+            this.tsDisableMPO.CheckedState.BorderColor = System.Drawing.Color.BlueViolet;
+            this.tsDisableMPO.CheckedState.FillColor = System.Drawing.Color.BlueViolet;
+            this.tsDisableMPO.CheckedState.InnerBorderColor = System.Drawing.Color.White;
+            this.tsDisableMPO.CheckedState.InnerColor = System.Drawing.Color.White;
+            this.tsDisableMPO.Location = new System.Drawing.Point(573, 149);
+            this.tsDisableMPO.Name = "tsDisableMPO";
+            this.tsDisableMPO.Size = new System.Drawing.Size(48, 21);
+            this.tsDisableMPO.TabIndex = 55;
+            this.tsDisableMPO.UncheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
+            this.tsDisableMPO.UncheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
+            this.tsDisableMPO.UncheckedState.InnerBorderColor = System.Drawing.Color.White;
+            this.tsDisableMPO.UncheckedState.InnerColor = System.Drawing.Color.White;
+            this.tsDisableMPO.CheckedChanged += new System.EventHandler(this.tsDisableMPO_CheckedChanged);
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Josefin Sans", 12F);
+            this.label7.ForeColor = System.Drawing.Color.White;
+            this.label7.Location = new System.Drawing.Point(639, 83);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(260, 25);
+            this.label7.TabIndex = 54;
+            this.label7.Text = "Disable Preemption (experimental)";
+            // 
+            // tsDisablePreemption
+            // 
+            this.tsDisablePreemption.Animated = true;
+            this.tsDisablePreemption.CheckedState.BorderColor = System.Drawing.Color.BlueViolet;
+            this.tsDisablePreemption.CheckedState.FillColor = System.Drawing.Color.BlueViolet;
+            this.tsDisablePreemption.CheckedState.InnerBorderColor = System.Drawing.Color.White;
+            this.tsDisablePreemption.CheckedState.InnerColor = System.Drawing.Color.White;
+            this.tsDisablePreemption.Location = new System.Drawing.Point(573, 87);
+            this.tsDisablePreemption.Name = "tsDisablePreemption";
+            this.tsDisablePreemption.Size = new System.Drawing.Size(48, 21);
+            this.tsDisablePreemption.TabIndex = 53;
+            this.tsDisablePreemption.UncheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
+            this.tsDisablePreemption.UncheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
+            this.tsDisablePreemption.UncheckedState.InnerBorderColor = System.Drawing.Color.White;
+            this.tsDisablePreemption.UncheckedState.InnerColor = System.Drawing.Color.White;
+            this.tsDisablePreemption.CheckedChanged += new System.EventHandler(this.tsDisablePreemption_CheckedChanged);
             // 
             // label1
             // 
@@ -431,22 +534,11 @@
             this.label16.AutoSize = true;
             this.label16.Font = new System.Drawing.Font("Josefin Sans", 12F);
             this.label16.ForeColor = System.Drawing.Color.White;
-            this.label16.Location = new System.Drawing.Point(627, 87);
+            this.label16.Location = new System.Drawing.Point(639, 33);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(164, 25);
             this.label16.TabIndex = 18;
             this.label16.Text = "Disable Print Spooler";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Josefin Sans", 12F);
-            this.label8.ForeColor = System.Drawing.Color.White;
-            this.label8.Location = new System.Drawing.Point(118, 415);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(221, 25);
-            this.label8.TabIndex = 18;
-            this.label8.Text = "Disable Lanman Workstation";
             // 
             // label15
             // 
@@ -468,17 +560,6 @@
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(0, 25);
             this.label3.TabIndex = 18;
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Font = new System.Drawing.Font("Josefin Sans", 12F);
-            this.label14.ForeColor = System.Drawing.Color.White;
-            this.label14.Location = new System.Drawing.Point(627, 33);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(205, 25);
-            this.label14.TabIndex = 18;
-            this.label14.Text = "Disable Network Discovery";
             // 
             // label6
             // 
@@ -546,23 +627,6 @@
             this.label9.Size = new System.Drawing.Size(105, 25);
             this.label9.TabIndex = 16;
             this.label9.Text = "Disable VPN";
-            // 
-            // tsDisableWorkstation
-            // 
-            this.tsDisableWorkstation.Animated = true;
-            this.tsDisableWorkstation.CheckedState.BorderColor = System.Drawing.Color.BlueViolet;
-            this.tsDisableWorkstation.CheckedState.FillColor = System.Drawing.Color.BlueViolet;
-            this.tsDisableWorkstation.CheckedState.InnerBorderColor = System.Drawing.Color.White;
-            this.tsDisableWorkstation.CheckedState.InnerColor = System.Drawing.Color.White;
-            this.tsDisableWorkstation.Location = new System.Drawing.Point(64, 415);
-            this.tsDisableWorkstation.Name = "tsDisableWorkstation";
-            this.tsDisableWorkstation.Size = new System.Drawing.Size(48, 21);
-            this.tsDisableWorkstation.TabIndex = 15;
-            this.tsDisableWorkstation.UncheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
-            this.tsDisableWorkstation.UncheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
-            this.tsDisableWorkstation.UncheckedState.InnerBorderColor = System.Drawing.Color.White;
-            this.tsDisableWorkstation.UncheckedState.InnerColor = System.Drawing.Color.White;
-            this.tsDisableWorkstation.CheckedChanged += new System.EventHandler(this.tsDisableWorkstation_CheckedChanged);
             // 
             // tsEnableHAGS
             // 
@@ -656,7 +720,7 @@
             this.tsDisablePrintSpooler.CheckedState.FillColor = System.Drawing.Color.BlueViolet;
             this.tsDisablePrintSpooler.CheckedState.InnerBorderColor = System.Drawing.Color.White;
             this.tsDisablePrintSpooler.CheckedState.InnerColor = System.Drawing.Color.White;
-            this.tsDisablePrintSpooler.Location = new System.Drawing.Point(573, 91);
+            this.tsDisablePrintSpooler.Location = new System.Drawing.Point(573, 37);
             this.tsDisablePrintSpooler.Name = "tsDisablePrintSpooler";
             this.tsDisablePrintSpooler.Size = new System.Drawing.Size(48, 21);
             this.tsDisablePrintSpooler.TabIndex = 15;
@@ -673,7 +737,7 @@
             this.tsDisableBluetooth.CheckedState.FillColor = System.Drawing.Color.BlueViolet;
             this.tsDisableBluetooth.CheckedState.InnerBorderColor = System.Drawing.Color.White;
             this.tsDisableBluetooth.CheckedState.InnerColor = System.Drawing.Color.White;
-            this.tsDisableBluetooth.Location = new System.Drawing.Point(64, 145);
+            this.tsDisableBluetooth.Location = new System.Drawing.Point(64, 149);
             this.tsDisableBluetooth.Name = "tsDisableBluetooth";
             this.tsDisableBluetooth.Size = new System.Drawing.Size(48, 21);
             this.tsDisableBluetooth.TabIndex = 15;
@@ -699,23 +763,6 @@
             this.tsDisableVPN.UncheckedState.InnerBorderColor = System.Drawing.Color.White;
             this.tsDisableVPN.UncheckedState.InnerColor = System.Drawing.Color.White;
             this.tsDisableVPN.CheckedChanged += new System.EventHandler(this.tsDisableVPN_CheckedChanged);
-            // 
-            // tsDisableNetworkDiscovery
-            // 
-            this.tsDisableNetworkDiscovery.Animated = true;
-            this.tsDisableNetworkDiscovery.CheckedState.BorderColor = System.Drawing.Color.BlueViolet;
-            this.tsDisableNetworkDiscovery.CheckedState.FillColor = System.Drawing.Color.BlueViolet;
-            this.tsDisableNetworkDiscovery.CheckedState.InnerBorderColor = System.Drawing.Color.White;
-            this.tsDisableNetworkDiscovery.CheckedState.InnerColor = System.Drawing.Color.White;
-            this.tsDisableNetworkDiscovery.Location = new System.Drawing.Point(573, 37);
-            this.tsDisableNetworkDiscovery.Name = "tsDisableNetworkDiscovery";
-            this.tsDisableNetworkDiscovery.Size = new System.Drawing.Size(48, 21);
-            this.tsDisableNetworkDiscovery.TabIndex = 15;
-            this.tsDisableNetworkDiscovery.UncheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
-            this.tsDisableNetworkDiscovery.UncheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
-            this.tsDisableNetworkDiscovery.UncheckedState.InnerBorderColor = System.Drawing.Color.White;
-            this.tsDisableNetworkDiscovery.UncheckedState.InnerColor = System.Drawing.Color.White;
-            this.tsDisableNetworkDiscovery.CheckedChanged += new System.EventHandler(this.tsDisableNetworkDiscovery_CheckedChanged);
             // 
             // guna2TabControl1
             // 
@@ -745,6 +792,72 @@
             this.guna2TabControl1.TabIndex = 48;
             this.guna2TabControl1.TabMenuBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(26)))), ((int)(((byte)(38)))));
             this.guna2TabControl1.TabMenuOrientation = Guna.UI2.WinForms.TabMenuOrientation.HorizontalTop;
+            // 
+            // guna2Button4
+            // 
+            this.guna2Button4.Animated = true;
+            this.guna2Button4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(26)))), ((int)(((byte)(38)))));
+            this.guna2Button4.BorderRadius = 5;
+            this.guna2Button4.CustomBorderThickness = new System.Windows.Forms.Padding(0, 0, 0, 2);
+            this.guna2Button4.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.guna2Button4.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.guna2Button4.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.guna2Button4.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.guna2Button4.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(90)))), ((int)(((byte)(114)))));
+            this.guna2Button4.Font = new System.Drawing.Font("Josefin Sans", 12F);
+            this.guna2Button4.ForeColor = System.Drawing.Color.White;
+            this.guna2Button4.HoverState.CustomBorderColor = System.Drawing.Color.BlueViolet;
+            this.guna2Button4.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(26)))), ((int)(((byte)(38)))));
+            this.guna2Button4.Location = new System.Drawing.Point(122, 333);
+            this.guna2Button4.Name = "guna2Button4";
+            this.guna2Button4.Size = new System.Drawing.Size(138, 42);
+            this.guna2Button4.TabIndex = 338;
+            this.guna2Button4.Text = "Vencord (cli)";
+            this.guna2Button4.Click += new System.EventHandler(this.guna2Button4_Click);
+            // 
+            // guna2Button5
+            // 
+            this.guna2Button5.Animated = true;
+            this.guna2Button5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(26)))), ((int)(((byte)(38)))));
+            this.guna2Button5.BorderRadius = 5;
+            this.guna2Button5.CustomBorderThickness = new System.Windows.Forms.Padding(0, 0, 0, 2);
+            this.guna2Button5.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.guna2Button5.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.guna2Button5.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.guna2Button5.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.guna2Button5.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(90)))), ((int)(((byte)(114)))));
+            this.guna2Button5.Font = new System.Drawing.Font("Josefin Sans", 12F);
+            this.guna2Button5.ForeColor = System.Drawing.Color.White;
+            this.guna2Button5.HoverState.CustomBorderColor = System.Drawing.Color.BlueViolet;
+            this.guna2Button5.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(26)))), ((int)(((byte)(38)))));
+            this.guna2Button5.Location = new System.Drawing.Point(322, 333);
+            this.guna2Button5.Name = "guna2Button5";
+            this.guna2Button5.Size = new System.Drawing.Size(138, 42);
+            this.guna2Button5.TabIndex = 339;
+            this.guna2Button5.Text = "Edge";
+            this.guna2Button5.Click += new System.EventHandler(this.guna2Button5_Click);
+            // 
+            // guna2Button6
+            // 
+            this.guna2Button6.Animated = true;
+            this.guna2Button6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(26)))), ((int)(((byte)(38)))));
+            this.guna2Button6.BorderRadius = 5;
+            this.guna2Button6.CustomBorderThickness = new System.Windows.Forms.Padding(0, 0, 0, 2);
+            this.guna2Button6.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.guna2Button6.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.guna2Button6.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.guna2Button6.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.guna2Button6.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(90)))), ((int)(((byte)(114)))));
+            this.guna2Button6.Font = new System.Drawing.Font("Josefin Sans", 12F);
+            this.guna2Button6.ForeColor = System.Drawing.Color.White;
+            this.guna2Button6.HoverState.CustomBorderColor = System.Drawing.Color.BlueViolet;
+            this.guna2Button6.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(26)))), ((int)(((byte)(38)))));
+            this.guna2Button6.Location = new System.Drawing.Point(522, 333);
+            this.guna2Button6.Name = "guna2Button6";
+            this.guna2Button6.Size = new System.Drawing.Size(138, 42);
+            this.guna2Button6.TabIndex = 340;
+            this.guna2Button6.Text = "LightShot";
+            this.guna2Button6.Click += new System.EventHandler(this.guna2Button6_Click);
             // 
             // Main
             // 
@@ -788,16 +901,13 @@
         private Guna.UI2.WinForms.Guna2TabControl guna2TabControl1;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label4;
-        private Guna.UI2.WinForms.Guna2ToggleSwitch tsDisableWorkstation;
         private Guna.UI2.WinForms.Guna2ToggleSwitch tsEnableHAGS;
         private Guna.UI2.WinForms.Guna2ToggleSwitch tsDisablePrefetch;
         private Guna.UI2.WinForms.Guna2ToggleSwitch tsDisableHyperV;
@@ -805,7 +915,6 @@
         private Guna.UI2.WinForms.Guna2ToggleSwitch tsDisableFSO;
         private Guna.UI2.WinForms.Guna2ToggleSwitch tsDisablePrintSpooler;
         private Guna.UI2.WinForms.Guna2ToggleSwitch tsDisableBluetooth;
-        private Guna.UI2.WinForms.Guna2ToggleSwitch tsDisableNetworkDiscovery;
         private System.Windows.Forms.TabPage tabPage2;
         private Guna.UI2.WinForms.Guna2Button guna2Button3;
         private Guna.UI2.WinForms.Guna2Button guna2Button2;
@@ -820,6 +929,16 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label9;
         private Guna.UI2.WinForms.Guna2ToggleSwitch tsDisableVPN;
+        private System.Windows.Forms.Label label7;
+        private Guna.UI2.WinForms.Guna2ToggleSwitch tsDisablePreemption;
+        private System.Windows.Forms.Label label8;
+        private Guna.UI2.WinForms.Guna2ToggleSwitch tsDisableMPO;
+        private System.Windows.Forms.Label label11;
+        private Guna.UI2.WinForms.Guna2ToggleSwitch tsDisableMitigations;
+        private System.Windows.Forms.Label label13;
+        private Guna.UI2.WinForms.Guna2Button guna2Button4;
+        private Guna.UI2.WinForms.Guna2Button guna2Button5;
+        private Guna.UI2.WinForms.Guna2Button guna2Button6;
     }
 }
 

@@ -6,6 +6,9 @@ using System.Windows.Forms;
 using Configurator.Classes;
 using System.Threading.Tasks;
 using System.Runtime.InteropServices;
+using System.Management;
+using System;
+using System.Linq;
 
 namespace Configurator
 {
@@ -45,12 +48,13 @@ namespace Configurator
             Utils.CheckRegistryValueAndSetToggleSwitch(key, "DisableFSO", tsDisableFSO);
             Utils.CheckRegistryValueAndSetToggleSwitch(key, "DisablePrefetch", tsDisablePrefetch);
             Utils.CheckRegistryValueAndSetToggleSwitch(key, "DisableHyperV", tsDisableHyperV);
-            Utils.CheckRegistryValueAndSetToggleSwitch(key, "DisableWorkstation", tsDisableWorkstation);
-            Utils.CheckRegistryValueAndSetToggleSwitch(key, "DisableNetworkDiscovery", tsDisableNetworkDiscovery);
             Utils.CheckRegistryValueAndSetToggleSwitch(key, "DisablePrinter", tsDisablePrintSpooler);
             Utils.CheckRegistryValueAndSetToggleSwitch(key, "DisableVPN", tsDisableVPN);
             Utils.CheckRegistryValueAndSetToggleSwitch(key, "DisableWiFi", tsDisableWiFI);
             Utils.CheckRegistryValueAndSetToggleSwitch(key, "EnableHAGS", tsEnableHAGS);
+            Utils.CheckRegistryValueAndSetToggleSwitch(key, "DisableMPO", tsDisableMPO);
+            Utils.CheckRegistryValueAndSetToggleSwitch(key, "DisableMitigations", tsDisableMitigations);
+            Utils.CheckRegistryValueAndSetToggleSwitch(key, "DisablePreemption", tsDisablePreemption);
 
             OSName.Text = Utils.GetOS();
             OSArch.Text = Utils.GetBitness();
@@ -264,55 +268,6 @@ namespace Configurator
                 Configurator.DeleteValue("DisableHyperV");
             }
         }
-
-        private void tsDisableWorkstation_CheckedChanged(object sender, EventArgs e)
-        {
-            if (tsDisableWorkstation.Checked)
-            {
-                object aVal = Configurator.GetValue("DisableWorkstation");
-                if (null != aVal)
-                {
-                }
-                else
-                {
-                    WorkstationDiasble();
-                    Configurator.SetValue("DisableWorkstation", 1);
-                }
-
-            }
-            else
-            {
-                WorkstationEnable();
-                Configurator.DeleteValue("DisableWorkstation");
-            }
-        }
-
-        private void tsDisableNetworkDiscovery_CheckedChanged(object sender, EventArgs e)
-        {
-            if (tsDisableNetworkDiscovery.Checked)
-            {
-                object aVal = Configurator.GetValue("DisableNetworkDiscovery");
-                if (null != aVal)
-                {
-                }
-                else
-                {
-                    WorkstationDiasble();
-                    Registry.SetValue("HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\NlaSvc", "Start", 4, RegistryValueKind.DWord);
-                    Registry.SetValue("HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\lmhosts", "Start", 4, RegistryValueKind.DWord);
-                    Registry.SetValue("HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\netman", "Start", 4, RegistryValueKind.DWord);
-                    Configurator.SetValue("DisableNetworkDiscovery", 1);
-                }
-            }
-            else
-            {
-                WorkstationEnable();
-                Registry.SetValue("HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\NlaSvc", "Start", 2, RegistryValueKind.DWord);
-                Registry.SetValue("HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\lmhosts", "Start", 2, RegistryValueKind.DWord);
-                Registry.SetValue("HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\netman", "Start", 2, RegistryValueKind.DWord);
-                Configurator.DeleteValue("DisableNetworkDiscovery");
-            }
-        }
         private void tsDisablePrintSpooler_CheckedChanged(object sender, EventArgs e)
         {
             if (tsDisablePrintSpooler.Checked)
@@ -398,7 +353,7 @@ namespace Configurator
                 Registry.SetValue("HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\NlaSvc  ", "Start", 2, RegistryValueKind.DWord);
                 Configurator.DeleteValue("DisableWiFi");
             }
-    }
+        }
 
         private void tsEnableHAGS_CheckedChanged(object sender, EventArgs e)
         {
@@ -450,7 +405,7 @@ DownloadsFolder + "\\chrome_installer.exe"
 DownloadsFolder + "\\SteamSetup.exe"
 ) == true)
             {
-    
+
                 Process.Start(DownloadsFolder + "\\SteamSetup.exe");
             }
         }
@@ -463,7 +418,7 @@ DownloadsFolder + "\\SteamSetup.exe"
 DownloadsFolder + "\\MozillaFirefoxSetup.exe"
 ) == true)
             {
-    
+
                 Process.Start(DownloadsFolder + "\\MozillaFirefoxSetup.exe");
             }
         }
@@ -479,15 +434,15 @@ DownloadsFolder + "\\OperaSetup.exe"
         }
         private void guna2Button3_Click(object sender, EventArgs e)
         {
-    
-                if (Utils.DownloadFile(
-    "https://github.com/Vencord/Installer/releases/latest/download/VencordInstaller.exe",
-    DownloadsFolder + "\\Vencord.exe"
-    ) == true)
-                {
-        
-                    Process.Start(DownloadsFolder + "\\Vencord.exe");
-                } 
+
+            if (Utils.DownloadFile(
+"https://github.com/Vencord/Installer/releases/latest/download/VencordInstaller.exe",
+DownloadsFolder + "\\Vencord.exe"
+) == true)
+            {
+
+                Process.Start(DownloadsFolder + "\\Vencord.exe");
+            }
         }
         private void guna2Button1_Click(object sender, EventArgs e)
         {
@@ -501,7 +456,7 @@ DownloadsFolder + "\\OperaSetup.exe"
 DownloadsFolder + "\\OperaGXSetup.exe"
 ) == true)
             {
-    
+
                 Process.Start(DownloadsFolder + "\\OperaGXSetup.exe");
             }
         }
@@ -531,6 +486,117 @@ DownloadsFolder + "\\DiscordSetup.exe"
         private void label12_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void tsDisablePreemption_CheckedChanged(object sender, EventArgs e)
+        {
+            if (tsDisablePreemption.Checked)
+            {
+                object aVal = Configurator.GetValue("DisablePreemption");
+                if (null != aVal)
+                {
+                }
+                else
+                {
+                    Registry.SetValue("HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Control\\GraphicsDrivers\\Scheduler", "EnablePreemption", 0, RegistryValueKind.DWord);
+                    Configurator.SetValue("DisablePreemption", 1);
+                }
+            }
+            else
+            {
+                Registry.SetValue("HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Control\\GraphicsDrivers\\Scheduler", "EnablePreemption", 1, RegistryValueKind.DWord);
+                Configurator.DeleteValue("DisablePreemption");
+            }
+        }
+
+        private void tsDisableMPO_CheckedChanged(object sender, EventArgs e)
+        {
+            if (tsDisableMPO.Checked)
+            {
+                object aVal = Configurator.GetValue("DisableMPO");
+                if (null != aVal)
+                {
+                }
+                else
+                {
+                    Process.Start("C:\\PostInstall\\GPU\\Nvidia\\mpo disable.bat");
+                    Configurator.SetValue("DisableMPO", 1);
+                }
+            }
+            else
+            {
+                Process.Start("C:\\PostInstall\\GPU\\Nvidia\\mpo enable.bat");
+                Configurator.DeleteValue("DisableMPO");
+            }
+        }
+        private void tsDisableMitigations_CheckedChange(object sender, EventArgs e)
+        {
+            if (tsDisableMitigations.Checked)
+            {
+                string manufacturer = GetCpuManufacturer();
+
+                if (manufacturer.Contains("AMD"))
+                {
+                
+                    Registry.SetValue("HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Control\\Session Manager\\Memory Management", "FeatureSettingsOverride", 64, RegistryValueKind.DWord);
+                    Configurator.SetValue("DisableMitigations", 1);
+                }
+                else if (manufacturer.Contains("Intel"))
+                {
+                    Registry.SetValue("HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Control\\Session Manager\\Memory Management", "FeatureSettingsOverride", 0, RegistryValueKind.DWord);
+                    Configurator.SetValue("DisableMitigations", 1);
+                }
+            }
+            else
+            {
+                Registry.SetValue("HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Control\\Session Manager\\Memory Management", "FeatureSettingsOverride", 3, RegistryValueKind.DWord);
+                Configurator.DeleteValue("DisableMitigations");
+            }
+        }
+
+        private string GetCpuManufacturer()
+        {
+            string manufacturer = "Unknown";
+
+            try
+            {
+                using (var searcher = new ManagementObjectSearcher("SELECT * FROM Win32_Processor"))
+                    foreach (ManagementObject obj in searcher.Get())
+                        if (obj["Manufacturer"] != null)
+                            return obj["Manufacturer"].ToString();
+            }
+            catch { }
+
+            return manufacturer;
+        }
+
+        private void guna2Button4_Click(object sender, EventArgs e)
+        {
+            Process.Start("powershell.exe", $"-Command \"iwr 'https://raw.githubusercontent.com/Vencord/Installer/main/install.ps1' -UseBasicParsing | iex\"");
+        }
+
+        private void guna2Button5_Click(object sender, EventArgs e)
+        {
+            if (Utils.DownloadFile(
+"https://go.microsoft.com/fwlink/?linkid=2108834&Channel=Stable&language=en&brand=M100",
+DownloadsFolder + "\\MicrosoftEdgeSetup.exe"
+) == true)
+            {
+
+                Process.Start(DownloadsFolder + "\\MicrosoftEdgeSetup.exe");
+            }
+        }
+
+        private void guna2Button6_Click(object sender, EventArgs e)
+        {
+            if (Utils.DownloadFile(
+"https://app.prntscr.com/build/setup-lightshot.exe",
+DownloadsFolder + "\\setup-lightshot.exe"
+) == true)
+            {
+
+                Process.Start(DownloadsFolder + "\\setup-lightshot.exe");
+            }
         }
     }
 }
