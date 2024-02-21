@@ -26,12 +26,8 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 0,
           "Children": [
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
-            },
             {
               "$type": "Document",
               "DocumentIndex": 0,
@@ -40,7 +36,7 @@
               "RelativeDocumentMoniker": "SapphireTool\\Main.cs",
               "ToolTip": "C:\\Users\\Administrator\\Documents\\GitHub\\SapphireTool\\SapphireTool\\Main.cs",
               "RelativeToolTip": "SapphireTool\\Main.cs",
-              "ViewState": "AQIAACkCAAAAAAAAAAAQwCwCAABLAAAA",
+              "ViewState": "AQIAAKgBAAAAAAAAAAAcwCwCAABLAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-02-21T15:07:11.717Z",
               "EditorCaption": ""
@@ -55,6 +51,10 @@
               "RelativeToolTip": "Configurator\\Main.cs",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-02-19T07:36:32.366Z"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
             },
             {
               "$type": "Document",
