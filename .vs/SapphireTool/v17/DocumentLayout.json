@@ -11,7 +11,7 @@
       "RelativeMoniker": "D:0:0:{F2485E94-21F1-4A75-A732-649C261ED90C}|SapphireTool\\SapphireTool.csproj|solutionrelative:sapphiretool\\main.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F2485E94-21F1-4A75-A732-649C261ED90C}|SapphireTool\\SapphireTool.csproj|c:\\users\\administrator\\documents\\github\\sapphiretool\\sapphiretool\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{F2485E94-21F1-4A75-A732-649C261ED90C}|SapphireTool\\SapphireTool.csproj|C:\\Users\\Administrator\\Documents\\GitHub\\SapphireTool\\sapphiretool\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{F2485E94-21F1-4A75-A732-649C261ED90C}|SapphireTool\\SapphireTool.csproj|solutionrelative:sapphiretool\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
@@ -40,35 +40,10 @@
               "RelativeDocumentMoniker": "SapphireTool\\Main.cs",
               "ToolTip": "C:\\Users\\Administrator\\Documents\\GitHub\\SapphireTool\\SapphireTool\\Main.cs",
               "RelativeToolTip": "SapphireTool\\Main.cs",
-              "ViewState": "AQIAAEICAAAAAAAAAAAuwF4CAABDAAAA",
+              "ViewState": "AQIAACkCAAAAAAAAAAAQwCwCAABLAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-02-21T15:07:11.717Z",
               "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\Administrator\\Documents\\GitHub\\SapphireTool\\SapphireTool\\Program.cs",
-              "RelativeDocumentMoniker": "SapphireTool\\Program.cs",
-              "ToolTip": "C:\\Users\\Administrator\\Documents\\GitHub\\SapphireTool\\SapphireTool\\Program.cs",
-              "RelativeToolTip": "SapphireTool\\Program.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAAaAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-02-19T07:36:56.873Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Main.cs [Design]",
-              "DocumentMoniker": "C:\\Users\\Administrator\\Documents\\GitHub\\SapphireTool\\SapphireTool\\Main.cs",
-              "RelativeDocumentMoniker": "SapphireTool\\Main.cs",
-              "ToolTip": "C:\\Users\\Administrator\\Documents\\GitHub\\SapphireTool\\SapphireTool\\Main.cs [Design]",
-              "RelativeToolTip": "SapphireTool\\Main.cs [Design]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-02-19T07:36:41.089Z",
-              "EditorCaption": " [Design]"
             },
             {
               "$type": "Document",
@@ -80,6 +55,29 @@
               "RelativeToolTip": "Configurator\\Main.cs",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-02-19T07:36:32.366Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\Administrator\\Documents\\GitHub\\SapphireTool\\SapphireTool\\Program.cs",
+              "RelativeDocumentMoniker": "SapphireTool\\Program.cs",
+              "ToolTip": "C:\\Users\\Administrator\\Documents\\GitHub\\SapphireTool\\SapphireTool\\Program.cs",
+              "RelativeToolTip": "SapphireTool\\Program.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAAaAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-02-19T07:36:56.873Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Main.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\Administrator\\Documents\\GitHub\\SapphireTool\\SapphireTool\\Main.cs",
+              "RelativeDocumentMoniker": "SapphireTool\\Main.cs",
+              "ToolTip": "C:\\Users\\Administrator\\Documents\\GitHub\\SapphireTool\\SapphireTool\\Main.cs [Design]",
+              "RelativeToolTip": "SapphireTool\\Main.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-02-19T07:36:41.089Z"
             }
           ]
         }

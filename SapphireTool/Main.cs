@@ -560,18 +560,13 @@ DownloadsFolder + "\\DiscordSetup.exe"
                 }
                 else
                 {
-                    Utils.RunCommand("netsh", "winsock reset");
+                    Process.Start("C:\\PostInstall\\Others\\Network\\Revert Network Tweaks.bat");
                     SapphireTool.SetValue("RevertNetworkTweaks", 1);
                 }
             }
             else
             {
-                Utils.RunCommand("netsh", "int tcp set heuristics disabled; pause");
-                Utils.RunCommand("netsh", "int tcp set supplemental Internet congestionprovider=ctcp");
-                Utils.RunCommand("netsh", "int tcp set global timestamps=disabled");
-                Utils.RunCommand("netsh", "int tcp set global rsc=disabled");
-                Utils.RunCommand("netsh", "int ip set global taskoffload=enabled");
-                Utils.RunCommand("netsh", "int tcp set global rss=enabled");
+                Process.Start("C:\\PostInstall\\Others\\Network\\SapphireOS Default Network Settings");
                 SapphireTool.DeleteValue("RevertNetworkTweaks");
             }
         }
