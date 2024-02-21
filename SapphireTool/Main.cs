@@ -603,5 +603,17 @@ DownloadsFolder + "\\setup-lightshot.exe"
                 Process.Start(DownloadsFolder + "\\setup-lightshot.exe");
             }
         }
+
+        private void guna2Button7_Click(object sender, EventArgs e)
+        {
+            if (Utils.DownloadFile(
+"https://go.microsoft.com/fwlink/?linkid=2124701",
+DownloadsFolder + "\\MicrosoftEdgeWebView2RuntimeInstallerX64.exe"
+) == true)
+            {
+
+                Process.Start(DownloadsFolder + "\\MicrosoftEdgeWebView2RuntimeInstallerX64.exe");
+            }
+        }
     }
 }

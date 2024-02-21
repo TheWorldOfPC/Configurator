@@ -19,6 +19,6 @@ C:\Users\Administrator\Documents\GitHub\SapphireTool\SapphireTool\obj\x64\Releas
 C:\Users\Administrator\Documents\GitHub\SapphireTool\SapphireTool\obj\x64\Release\Configurator.Properties.Resources.resources
 C:\Users\Administrator\Documents\GitHub\SapphireTool\SapphireTool\obj\x64\Release\SapphireTool.csproj.GenerateResource.cache
 C:\Users\Administrator\Documents\GitHub\SapphireTool\SapphireTool\obj\x64\Release\SapphireTool.csproj.CoreCompileInputs.cache
-C:\Users\Administrator\Documents\GitHub\SapphireTool\SapphireTool\obj\x64\Release\SapphireTool.csproj.CopyComplete
 C:\Users\Administrator\Documents\GitHub\SapphireTool\SapphireTool\obj\x64\Release\SapphireTool.exe
 C:\Users\Administrator\Documents\GitHub\SapphireTool\SapphireTool\obj\x64\Release\SapphireTool.pdb
+C:\Users\Administrator\Documents\GitHub\SapphireTool\SapphireTool\obj\x64\Release\Sapphire.57189B1E.Up2Date

@@ -53,6 +53,8 @@
             this.btnChrome = new Guna.UI2.WinForms.Guna2Button();
             this.btnBrave = new Guna.UI2.WinForms.Guna2Button();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.label13 = new System.Windows.Forms.Label();
+            this.tsRevertNetworkTweaks = new Guna.UI2.WinForms.Guna2ToggleSwitch();
             this.label14 = new System.Windows.Forms.Label();
             this.tsEnableClipboardSvc = new Guna.UI2.WinForms.Guna2ToggleSwitch();
             this.tsEnableHAGS = new Guna.UI2.WinForms.Guna2ToggleSwitch();
@@ -79,8 +81,7 @@
             this.label9 = new System.Windows.Forms.Label();
             this.tsDisablePrintSpooler = new Guna.UI2.WinForms.Guna2ToggleSwitch();
             this.guna2TabControl1 = new Guna.UI2.WinForms.Guna2TabControl();
-            this.tsRevertNetworkTweaks = new Guna.UI2.WinForms.Guna2ToggleSwitch();
-            this.label13 = new System.Windows.Forms.Label();
+            this.guna2Button7 = new Guna.UI2.WinForms.Guna2Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.tabPage2.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -186,6 +187,7 @@
             // tabPage2
             // 
             this.tabPage2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(26)))), ((int)(((byte)(38)))));
+            this.tabPage2.Controls.Add(this.guna2Button7);
             this.tabPage2.Controls.Add(this.guna2Button6);
             this.tabPage2.Controls.Add(this.guna2Button5);
             this.tabPage2.Controls.Add(this.guna2Button4);
@@ -495,6 +497,34 @@
             this.tabPage1.Size = new System.Drawing.Size(1049, 490);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Configure";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Josefin Sans", 12F);
+            this.label13.ForeColor = System.Drawing.Color.White;
+            this.label13.Location = new System.Drawing.Point(639, 192);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(181, 25);
+            this.label13.TabIndex = 62;
+            this.label13.Text = "Revert Network Tweaks";
+            // 
+            // tsRevertNetworkTweaks
+            // 
+            this.tsRevertNetworkTweaks.Animated = true;
+            this.tsRevertNetworkTweaks.CheckedState.BorderColor = System.Drawing.Color.BlueViolet;
+            this.tsRevertNetworkTweaks.CheckedState.FillColor = System.Drawing.Color.BlueViolet;
+            this.tsRevertNetworkTweaks.CheckedState.InnerBorderColor = System.Drawing.Color.White;
+            this.tsRevertNetworkTweaks.CheckedState.InnerColor = System.Drawing.Color.White;
+            this.tsRevertNetworkTweaks.Location = new System.Drawing.Point(573, 196);
+            this.tsRevertNetworkTweaks.Name = "tsRevertNetworkTweaks";
+            this.tsRevertNetworkTweaks.Size = new System.Drawing.Size(48, 21);
+            this.tsRevertNetworkTweaks.TabIndex = 61;
+            this.tsRevertNetworkTweaks.UncheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
+            this.tsRevertNetworkTweaks.UncheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
+            this.tsRevertNetworkTweaks.UncheckedState.InnerBorderColor = System.Drawing.Color.White;
+            this.tsRevertNetworkTweaks.UncheckedState.InnerColor = System.Drawing.Color.White;
+            this.tsRevertNetworkTweaks.CheckedChanged += new System.EventHandler(this.tsRevertNetworkTweaks_CheckedChanged);
             // 
             // label14
             // 
@@ -863,33 +893,27 @@
             this.guna2TabControl1.TabMenuBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(26)))), ((int)(((byte)(38)))));
             this.guna2TabControl1.TabMenuOrientation = Guna.UI2.WinForms.TabMenuOrientation.HorizontalTop;
             // 
-            // tsRevertNetworkTweaks
+            // guna2Button7
             // 
-            this.tsRevertNetworkTweaks.Animated = true;
-            this.tsRevertNetworkTweaks.CheckedState.BorderColor = System.Drawing.Color.BlueViolet;
-            this.tsRevertNetworkTweaks.CheckedState.FillColor = System.Drawing.Color.BlueViolet;
-            this.tsRevertNetworkTweaks.CheckedState.InnerBorderColor = System.Drawing.Color.White;
-            this.tsRevertNetworkTweaks.CheckedState.InnerColor = System.Drawing.Color.White;
-            this.tsRevertNetworkTweaks.Location = new System.Drawing.Point(573, 196);
-            this.tsRevertNetworkTweaks.Name = "tsRevertNetworkTweaks";
-            this.tsRevertNetworkTweaks.Size = new System.Drawing.Size(48, 21);
-            this.tsRevertNetworkTweaks.TabIndex = 61;
-            this.tsRevertNetworkTweaks.UncheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
-            this.tsRevertNetworkTweaks.UncheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
-            this.tsRevertNetworkTweaks.UncheckedState.InnerBorderColor = System.Drawing.Color.White;
-            this.tsRevertNetworkTweaks.UncheckedState.InnerColor = System.Drawing.Color.White;
-            this.tsRevertNetworkTweaks.CheckedChanged += new System.EventHandler(this.tsRevertNetworkTweaks_CheckedChanged);
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Josefin Sans", 12F);
-            this.label13.ForeColor = System.Drawing.Color.White;
-            this.label13.Location = new System.Drawing.Point(639, 192);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(181, 25);
-            this.label13.TabIndex = 62;
-            this.label13.Text = "Revert Network Tweaks";
+            this.guna2Button7.Animated = true;
+            this.guna2Button7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(26)))), ((int)(((byte)(38)))));
+            this.guna2Button7.BorderRadius = 5;
+            this.guna2Button7.CustomBorderThickness = new System.Windows.Forms.Padding(0, 0, 0, 2);
+            this.guna2Button7.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.guna2Button7.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.guna2Button7.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.guna2Button7.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.guna2Button7.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(90)))), ((int)(((byte)(114)))));
+            this.guna2Button7.Font = new System.Drawing.Font("Josefin Sans", 12F);
+            this.guna2Button7.ForeColor = System.Drawing.Color.White;
+            this.guna2Button7.HoverState.CustomBorderColor = System.Drawing.Color.BlueViolet;
+            this.guna2Button7.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(26)))), ((int)(((byte)(38)))));
+            this.guna2Button7.Location = new System.Drawing.Point(722, 333);
+            this.guna2Button7.Name = "guna2Button7";
+            this.guna2Button7.Size = new System.Drawing.Size(138, 42);
+            this.guna2Button7.TabIndex = 341;
+            this.guna2Button7.Text = "WebView";
+            this.guna2Button7.Click += new System.EventHandler(this.guna2Button7_Click);
             // 
             // Main
             // 
@@ -973,6 +997,7 @@
         private Guna.UI2.WinForms.Guna2ToggleSwitch tsEnableClipboardSvc;
         private System.Windows.Forms.Label label13;
         private Guna.UI2.WinForms.Guna2ToggleSwitch tsRevertNetworkTweaks;
+        private Guna.UI2.WinForms.Guna2Button guna2Button7;
     }
 }
 
