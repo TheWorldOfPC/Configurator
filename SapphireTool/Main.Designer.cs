@@ -1072,7 +1072,7 @@
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(391, 20);
             this.label18.TabIndex = 66;
-            this.label18.Text = "Set SvcHostSplitThresholdInKB To The Highest Value";
+            this.label18.Text = "Set SvcHostSplitThresholdInKB To FFFFFFFF";
             // 
             // label17
             // 
