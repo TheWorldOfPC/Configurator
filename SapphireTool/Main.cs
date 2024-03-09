@@ -650,13 +650,13 @@ DownloadsFolder + "\\MicrosoftEdgeWebView2RuntimeInstallerX64.exe"
                 }
                 else
                 {
-                    Registry.SetValue("HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Control", "SvcHostSplitThresholdInKB", 4294967295, RegistryValueKind.DWord);
+                    Process.Start("C:\\PostInstall\\Others\\SvcHostSplitThresholdInKB\\Set SvcHostSplitThresholdInKB To ffffffff.bat");
                     SapphireTool.SetValue("DisableSvcHost", 1);
                 }
             }
             else
             {
-                Registry.SetValue("HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Control", "SvcHostSplitThresholdInKB", 380000, RegistryValueKind.DWord);
+                Process.Start("C:\\PostInstall\\Others\\SvcHostSplitThresholdInKB\\Set SvcHostSplitThresholdInKB To Default Value.bat");
                 SapphireTool.DeleteValue("DisableSvcHost");
             }
         }
