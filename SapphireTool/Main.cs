@@ -56,6 +56,9 @@ namespace SapphireTool
             Utils.CheckRegistryValueAndSetToggleSwitch(key, "DisablePreemption", tsDisablePreemption);
             Utils.CheckRegistryValueAndSetToggleSwitch(key, "EnableClipboardSvc", tsEnableClipboardSvc);
             Utils.CheckRegistryValueAndSetToggleSwitch(key, "RevertNetworkTweaks", tsRevertNetworkTweaks);
+            Utils.CheckRegistryValueAndSetToggleSwitch(key, "DisableHDCP", tsDisableHDCP);
+            Utils.CheckRegistryValueAndSetToggleSwitch(key, "SvcHost", tsSvcHost);
+            Utils.CheckRegistryValueAndSetToggleSwitch(key, "EnableNX", tsEnableNX);
 
             OSName.Text = Utils.GetOS();
             OSArch.Text = Utils.GetBitness();
@@ -476,12 +479,12 @@ DownloadsFolder + "\\DiscordSetup.exe"
 
         private void label1_Click(object sender, EventArgs e)
         {
-            Process.Start("https://github.com/TheWorldOfPC/SapphireTool");
+            Process.Start("https://github.com/TheWorldOfPC/Configurator");
         }
 
         private void label10_Click(object sender, EventArgs e)
         {
-            Process.Start("https://github.com/TheWorldOfPC/SapphireTool");
+            Process.Start("https://github.com/TheWorldOfPC/Configurator");
         }
 
         private void label12_Click(object sender, EventArgs e)
@@ -609,6 +612,153 @@ DownloadsFolder + "\\MicrosoftEdgeWebView2RuntimeInstallerX64.exe"
 
                 Process.Start(DownloadsFolder + "\\MicrosoftEdgeWebView2RuntimeInstallerX64.exe");
             }
+        }
+
+        private void guna2Button8_Click(object sender, EventArgs e)
+        {
+            Process.Start("C:\\PostInstall\\GPU\\AMD\\AMD Dwords by imribiy.bat");
+        }
+
+        private void tsDisableHDCP_CheckedChanged(object sender, EventArgs e)
+            {
+                if (tsDisableHDCP.Checked)
+                {
+                    object aVal = SapphireTool.GetValue("DisableHDCP");
+                    if (null != aVal)
+                    {
+                    }
+                    else
+                    {
+                        Registry.SetValue("HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Control\\Class\\{4d36e968-e325-11ce-bfc1-08002be10318}\\0000", "RMHdcpKeyglobZero", 1, RegistryValueKind.DWord);
+                        SapphireTool.SetValue("DisableHDCP", 1);
+                    }
+                }
+                else
+                {
+                Registry.SetValue("HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Control\\Class\\{4d36e968-e325-11ce-bfc1-08002be10318}\\0000", "RMHdcpKeyglobZero", 0, RegistryValueKind.DWord);
+                SapphireTool.DeleteValue("DisableHDCP");
+                }
+            }
+
+        private void tsSvcHost_CheckedChanged(object sender, EventArgs e)
+        {
+            if (tsSvcHost.Checked)
+            {
+                object aVal = SapphireTool.GetValue("SvcHost");
+                if (null != aVal)
+                {
+                }
+                else
+                {
+                    Registry.SetValue("HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Control", "SvcHostSplitThresholdInKB", 4294967295, RegistryValueKind.DWord);
+                    SapphireTool.SetValue("DisableSvcHost", 1);
+                }
+            }
+            else
+            {
+                Registry.SetValue("HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Control", "SvcHostSplitThresholdInKB", 380000, RegistryValueKind.DWord);
+                SapphireTool.DeleteValue("DisableSvcHost");
+            }
+        }
+
+        private void tsEnableNX_CheckedChanged(object sender, EventArgs e)
+        {
+            if (tsEnableNX.Checked)
+            {
+                object aVal = SapphireTool.GetValue("SvcHost");
+                if (null != aVal)
+                {
+                }
+                else
+                {
+                    Utils.RunCommand("bcdedit", "/set NX OptIn");
+                    SapphireTool.SetValue("EnableNX", 1);
+                }
+            }
+            else
+            {
+                Utils.RunCommand("bcdedit", "/set NX AlwaysOff");
+                SapphireTool.DeleteValue("EnableNX");
+            }
+        }
+
+        private void guna2Button10_Click(object sender, EventArgs e)
+        {
+            Process.Start("C:\\PostInstall\\GPU\\AMD\\radeon software slimmer\\RadeonSoftwareSlimmer.exe");
+        }
+
+        private void guna2Button9_Click(object sender, EventArgs e)
+        {
+            Utils.RunCommand("C:\\PostInstall\\GPU\\Nvidia\\NIP\\nvidiaProfileInspector.exe", "/s C:\\PostInstall\\GPU\\Nvidia\\NIP\\Settings.nip");
+        }
+
+        private void guna2Button11_Click(object sender, EventArgs e)
+        {
+            Process.Start("C:\\PostInstall\\Mitigations\\InSpectre.exe");
+        }
+
+        private void guna2Button12_Click(object sender, EventArgs e)
+        {
+            Process.Start("C:\\PostInstall\\GPU\\Nvidia\\!P-State 0.bat");
+        }
+
+        private void guna2Button13_Click(object sender, EventArgs e)
+        {
+            Process.Start("C:\\PostInstall\\Tweaks\\DevManView.exe");
+        }
+
+        private void guna2Button14_Click(object sender, EventArgs e)
+        {
+            Process.Start("C:\\PostInstall\\Tweaks\\NSudo.exe");
+        }
+
+        private void guna2Button15_Click(object sender, EventArgs e)
+        {
+            Process.Start("C:\\PostInstall\\Tweaks\\serviwin.exe");
+        }
+
+        private void guna2Button16_Click(object sender, EventArgs e)
+        {
+            Process.Start("C:\\PostInstall\\Tweaks\\DeviceCleanup.exe");
+        }
+
+        private void guna2Button17_Click(object sender, EventArgs e)
+        {
+            Process.Start("C:\\PostInstall\\Tweaks\\CRU\\CRU.exe");
+        }
+
+        private void guna2Button18_Click(object sender, EventArgs e)
+        {
+            Process.Start("C:\\PostInstall\\Tweaks\\Auto DSCP & FSE.bat");
+        }
+
+        private void guna2Button19_Click(object sender, EventArgs e)
+        {
+            Process.Start("C:\\PostInstall\\Tweaks\\Autoruns.exe");
+        }
+
+        private void guna2Button20_Click(object sender, EventArgs e)
+        {
+            Process.Start("C:\\PostInstall\\Tweaks\\MeasureSleep.exe");
+        }
+
+        private void guna2Button21_Click(object sender, EventArgs e)
+        {
+            Process.Start("C:\\PostInstall\\Tweaks\\MSI Mode Utility.exe");
+        }
+
+        private void guna2Button22_Click(object sender, EventArgs e)
+        {
+            Process.Start("C:\\PostInstall\\Tweaks\\Interrupt Affinity Policy Tool.exe");
+        }
+
+        private void guna2Button23_Click(object sender, EventArgs e)
+        {
+            Process.Start("C:\\PostInstall\\GPU\\Nvidia\\NVCleanstall_1.16.0.exe");
+        }
+        private void label20_Click(object sender, EventArgs e)
+        {
+            Process.Start("https://github.com/TheWorldOfPC/Configurator");
         }
     }
 }
