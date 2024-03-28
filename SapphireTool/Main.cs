@@ -1,6 +1,5 @@
 ﻿using Guna.UI2.WinForms;
 using Microsoft.Win32;
-using System;
 using System.Diagnostics;
 using System.Windows.Forms;
 using Configurator.Classes;
@@ -9,6 +8,7 @@ using System.Runtime.InteropServices;
 using System.Management;
 using System;
 using System.Linq;
+using System.Web.UI.WebControls;
 
 namespace SapphireTool
 {
@@ -59,6 +59,7 @@ namespace SapphireTool
             Utils.CheckRegistryValueAndSetToggleSwitch(key, "DisableHDCP", tsDisableHDCP);
             Utils.CheckRegistryValueAndSetToggleSwitch(key, "SvcHost", tsSvcHost);
             Utils.CheckRegistryValueAndSetToggleSwitch(key, "EnableNX", tsEnableNX);
+            Utils.CheckRegistryValueAndSetToggleSwitch(key, "DefaultServices", tsDefaultServices);
 
             OSName.Text = Utils.GetOS();
             OSArch.Text = Utils.GetBitness();
@@ -78,31 +79,6 @@ namespace SapphireTool
             }
         }
 
-        //please wait
-        //Workstation Services
-        private void WorkstationEnable()
-        {
-            Registry.SetValue("HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\rdbss", "Start", 2, RegistryValueKind.DWord);
-            Registry.SetValue("HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\KSecPkg", "Start", 2, RegistryValueKind.DWord);
-            Registry.SetValue("HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\mrxsmb20", "Start", 2, RegistryValueKind.DWord);
-            Registry.SetValue("HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\mrxsmb", "Start", 2, RegistryValueKind.DWord);
-            Registry.SetValue("HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\srv2", "Start", 2, RegistryValueKind.DWord);
-            Registry.SetValue("HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\LanmanWorkstation", "Start", 2, RegistryValueKind.DWord);
-            Utils.RunCommand("DISM", "/Online /Enable-Feature /FeatureName:SmbDirect /NoRestart");
-        }
-        private void WorkstationDiasble()
-        {
-            Registry.SetValue("HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\rdbss", "Start", 4, RegistryValueKind.DWord);
-            Registry.SetValue("HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\KSecPkg", "Start", 4, RegistryValueKind.DWord);
-            Registry.SetValue("HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\mrxsmb20", "Start", 4, RegistryValueKind.DWord);
-            Registry.SetValue("HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\mrxsmb", "Start", 4, RegistryValueKind.DWord);
-            Registry.SetValue("HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\srv2", "Start", 4, RegistryValueKind.DWord);
-            Registry.SetValue("HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\LanmanWorkstation", "Start", 4, RegistryValueKind.DWord);
-            Utils.RunCommand("DISM", "/Online /Disable-Feature /FeatureName:SmbDirect /NoRestart");
-        }
-
-        //Checkboxes
-
         private void tsDisableBluetooth_CheckedChanged(object sender, EventArgs e)
         {
             if (tsDisableBluetooth.Checked)
@@ -113,13 +89,43 @@ namespace SapphireTool
                 }
                 else
                 {
+                    Registry.SetValue("HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\BthA4dp", "Start", 4, RegistryValueKind.DWord);
+                    Registry.SetValue("HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\BthEnum", "Start", 4, RegistryValueKind.DWord);
+                    Registry.SetValue("HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\BthHFEnum", "Start", 4, RegistryValueKind.DWord);
+                    Registry.SetValue("HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\BthLEEnum", "Start", 4, RegistryValueKind.DWord);
+                    Registry.SetValue("HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\BTHMODEM", "Start", 4, RegistryValueKind.DWord);
+                    Registry.SetValue("HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\Microsoft_Bluetooth_AvrcpTransport", "Start", 4, RegistryValueKind.DWord);
+                    Registry.SetValue("HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\BluetoothUserService", "Start", 4, RegistryValueKind.DWord);
                     Registry.SetValue("HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\BthAvctpSvc", "Start", 4, RegistryValueKind.DWord);
+                    Registry.SetValue("HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\RFCOMM", "Start", 4, RegistryValueKind.DWord);
+                    Registry.SetValue("HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\bthserv", "Start", 4, RegistryValueKind.DWord);
+                    Registry.SetValue("HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\BTAGService", "Start", 4, RegistryValueKind.DWord);
+                    Registry.SetValue("HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\BTHUSB", "Start", 4, RegistryValueKind.DWord);
+                    Registry.SetValue("HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\BTHPORT", "Start", 4, RegistryValueKind.DWord);
+                    Registry.SetValue("HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\BthMini", "Start", 4, RegistryValueKind.DWord);
+                    Registry.SetValue("HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\HidBth", "Start", 4, RegistryValueKind.DWord);
+                    Utils.RunCommand("C:\\PostInstall\\Tweaks\\DevManView.exe", "/disable \"Microsoft Radio Device Enumeration Bus");
                     SapphireTool.SetValue("DisableBluetooth", 1);
                 }
             }
             else
             {
+                Registry.SetValue("HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\BthA3dp", "Start", 3, RegistryValueKind.DWord);
+                Registry.SetValue("HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\BthEnum", "Start", 3, RegistryValueKind.DWord);
+                Registry.SetValue("HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\BthHFEnum", "Start", 3, RegistryValueKind.DWord);
+                Registry.SetValue("HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\BthLEEnum", "Start", 3, RegistryValueKind.DWord);
+                Registry.SetValue("HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\BTHMODEM", "Start", 3, RegistryValueKind.DWord);
+                Registry.SetValue("HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\Microsoft_Bluetooth_AvrcpTransport", "Start", 3, RegistryValueKind.DWord);
+                Registry.SetValue("HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\BluetoothUserService", "Start", 3, RegistryValueKind.DWord);
                 Registry.SetValue("HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\BthAvctpSvc", "Start", 3, RegistryValueKind.DWord);
+                Registry.SetValue("HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\RFCOMM", "Start", 3, RegistryValueKind.DWord);
+                Registry.SetValue("HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\bthserv", "Start", 3, RegistryValueKind.DWord);
+                Registry.SetValue("HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\BTAGService", "Start", 3, RegistryValueKind.DWord);
+                Registry.SetValue("HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\BTHUSB", "Start", 3, RegistryValueKind.DWord);
+                Registry.SetValue("HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\BTHPORT", "Start", 3, RegistryValueKind.DWord);
+                Registry.SetValue("HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\BthMini", "Start", 3, RegistryValueKind.DWord);
+                Registry.SetValue("HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\HidBth", "Start", 3, RegistryValueKind.DWord);
+                Utils.RunCommand("C:\\PostInstall\\Tweaks\\DevManView.exe", "/enable \"Microsoft Radio Device Enumeration Bus");
                 SapphireTool.DeleteValue("DisableBluetooth");
             }
         }
@@ -411,6 +417,13 @@ DownloadsFolder + "\\SteamSetup.exe"
             {
 
                 Process.Start(DownloadsFolder + "\\SteamSetup.exe");
+                Registry.SetValue("HKEY_CURRENT_USER\\SOFTWARE\\Valve\\Steam", "SmoothScrollWebViews", 0, RegistryValueKind.DWord);
+                Registry.SetValue("HKEY_CURRENT_USER\\SOFTWARE\\Valve\\Steam", "DWriteEnable", 0, RegistryValueKind.DWord);
+                Registry.SetValue("HKEY_CURRENT_USER\\SOFTWARE\\Valve\\Steam", "StartupMode", 0, RegistryValueKind.DWord);
+                Registry.SetValue("HKEY_CURRENT_USER\\SOFTWARE\\Valve\\Steam", "H264HWAccel", 0, RegistryValueKind.DWord);
+                Registry.SetValue("HKEY_CURRENT_USER\\SOFTWARE\\Valve\\Steam", "DPIScaling", 0, RegistryValueKind.DWord);
+                Registry.SetValue("HKEY_CURRENT_USER\\SOFTWARE\\Valve\\Steam", "GPUAccelWebViews", 0, RegistryValueKind.DWord);
+                // Made by imribiy
             }
         }
 
@@ -481,12 +494,6 @@ DownloadsFolder + "\\DiscordSetup.exe"
         {
             Process.Start("https://github.com/TheWorldOfPC/Configurator");
         }
-
-        private void label10_Click(object sender, EventArgs e)
-        {
-            Process.Start("https://github.com/TheWorldOfPC/Configurator");
-        }
-
         private void label12_Click(object sender, EventArgs e)
         {
 
@@ -613,12 +620,6 @@ DownloadsFolder + "\\MicrosoftEdgeWebView2RuntimeInstallerX64.exe"
                 Process.Start(DownloadsFolder + "\\MicrosoftEdgeWebView2RuntimeInstallerX64.exe");
             }
         }
-
-        private void guna2Button8_Click(object sender, EventArgs e)
-        {
-            Process.Start("C:\\PostInstall\\GPU\\AMD\\AMD Dwords by imribiy.bat");
-        }
-
         private void tsDisableHDCP_CheckedChanged(object sender, EventArgs e)
             {
                 if (tsDisableHDCP.Checked)
@@ -682,26 +683,10 @@ DownloadsFolder + "\\MicrosoftEdgeWebView2RuntimeInstallerX64.exe"
             }
         }
 
-        private void guna2Button10_Click(object sender, EventArgs e)
-        {
-            Process.Start("C:\\PostInstall\\GPU\\AMD\\radeon software slimmer\\RadeonSoftwareSlimmer.exe");
-        }
-
-        private void guna2Button9_Click(object sender, EventArgs e)
-        {
-            Utils.RunCommand("C:\\PostInstall\\GPU\\Nvidia\\NIP\\nvidiaProfileInspector.exe", "/s C:\\PostInstall\\GPU\\Nvidia\\NIP\\Settings.nip");
-        }
-
         private void guna2Button11_Click(object sender, EventArgs e)
         {
             Process.Start("C:\\PostInstall\\Mitigations\\InSpectre.exe");
         }
-
-        private void guna2Button12_Click(object sender, EventArgs e)
-        {
-            Process.Start("C:\\PostInstall\\GPU\\Nvidia\\!P-State 0.bat");
-        }
-
         private void guna2Button13_Click(object sender, EventArgs e)
         {
             Process.Start("C:\\PostInstall\\Tweaks\\DevManView.exe");
@@ -752,13 +737,90 @@ DownloadsFolder + "\\MicrosoftEdgeWebView2RuntimeInstallerX64.exe"
             Process.Start("C:\\PostInstall\\Tweaks\\Interrupt Affinity Policy Tool.exe");
         }
 
-        private void guna2Button23_Click(object sender, EventArgs e)
+        private void tsDefaultServices_CheckedChanged(object sender, EventArgs e)
+        {
+            if (tsDefaultServices.Checked)
+            {
+                object aVal = SapphireTool.GetValue("DefaultServices");
+                if (null != aVal)
+                {
+                }
+                else
+                {
+                   Utils.RunCommand("C:\\PostInstall\\Tweaks\\Nsudo.exe", "-U:S -P:E cmd /c C:\\PostInstall\\Services\\Windows-Default-services.reg");
+                    SapphireTool.SetValue("DefaultServices", 1);
+                }
+            }
+            else
+            {
+                Utils.RunCommand("C:\\PostInstall\\Tweaks\\Nsudo.exe", "-U:S -P:E cmd /c C:\\PostInstall\\Services\\SapphireOS-Default-services.reg");
+                SapphireTool.DeleteValue("DefaultServices");
+            }
+        }
+
+        private void guna2Button24_Click(object sender, EventArgs e)
+        {
+            Process.Start("C:\\PostInstall\\Tweaks\\Mouse Polling Test\\MouseTester.exe");
+        }
+
+        private void guna2Button25_Click(object sender, EventArgs e)
+        {
+            Process.Start("C:\\Users\\Administrator\\Desktop\\Dism++10.1.1002.1B\\Dism++x64.exe");
+        }
+
+        private void guna2Button26_Click(object sender, EventArgs e)
+        {
+            Process.Start("C:\\PostInstall\\Tweaks\\Process explorer\\Process Explorer.exe");
+        }
+
+        private void guna2Button27_Click(object sender, EventArgs e)
+        {
+            Process.Start("C:\\PostInstall\\Tweaks\\hidusbf\\DRIVER\\Setup.exe");
+        }
+
+        private void guna2Button28_Click(object sender, EventArgs e)
+        {
+            Utils.RunCommand("C:\\PostInstall\\GPU\\Nvidia\\NIP\\nvidiaProfileInspector.exe", "/s C:\\PostInstall\\GPU\\Nvidia\\NIP\\Settings.nip");
+        }
+
+        private void guna2Button29_Click(object sender, EventArgs e)
+        {
+            Process.Start("C:\\PostInstall\\GPU\\Nvidia\\!P-State 0.bat");
+        }
+
+        private void guna2Button30_Click(object sender, EventArgs e)
+        {
+            Process.Start("C:\\PostInstall\\GPU\\Nvidia\\!No ECC.bat");
+        }
+
+        private void guna2Button31_Click(object sender, EventArgs e)
+        {
+            Process.Start("C:\\PostInstall\\GPU\\Nvidia\\!Disable telemetry (Breaks Geforce).bat");
+        }
+
+        private void guna2Button32_Click(object sender, EventArgs e)
+        {
+            Process.Start("C:\\PostInstall\\GPU\\Nvidia\\!Unrestricted Clock Policy by Cancerogeno.bat");
+        }
+
+        private void guna2Button33_Click(object sender, EventArgs e)
         {
             Process.Start("C:\\PostInstall\\GPU\\Nvidia\\NVCleanstall_1.16.0.exe");
         }
-        private void label20_Click(object sender, EventArgs e)
+
+        private void guna2Button34_Click(object sender, EventArgs e)
         {
-            Process.Start("https://github.com/TheWorldOfPC/Configurator");
+            Process.Start("C:\\PostInstall\\GPU\\Nvidia\\Nvidia Debloating Guide by AMIT.url");
+        }
+
+        private void guna2Button35_Click(object sender, EventArgs e)
+        {
+            Process.Start("C:\\PostInstall\\GPU\\AMD\\AMD Dwords by imribiy.bat");
+        }
+
+        private void guna2Button36_Click(object sender, EventArgs e)
+        {
+            Process.Start("C:\\PostInstall\\GPU\\AMD\\radeon software slimmer\\RadeonSoftwareSlimmer.exe");
         }
     }
 }

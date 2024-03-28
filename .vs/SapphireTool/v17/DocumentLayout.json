@@ -3,34 +3,30 @@
   "WorkspaceRootPath": "C:\\Users\\Administrator\\Documents\\GitHub\\SapphireTool\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{F2485E94-21F1-4A75-A732-649C261ED90C}|SapphireTool\\SapphireTool.csproj|c:\\users\\administrator\\documents\\github\\sapphiretool\\sapphiretool\\main.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F2485E94-21F1-4A75-A732-649C261ED90C}|SapphireTool\\SapphireTool.csproj|solutionrelative:sapphiretool\\main.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{F2485E94-21F1-4A75-A732-649C261ED90C}|SapphireTool\\SapphireTool.csproj|c:\\users\\administrator\\documents\\github\\sapphiretool\\sapphiretool\\main.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{F2485E94-21F1-4A75-A732-649C261ED90C}|SapphireTool\\SapphireTool.csproj|solutionrelative:sapphiretool\\main.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Administrator\\Documents\\GitHub\\SapphireTool\\Configurator\\Main.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Configurator\\Main.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{F2485E94-21F1-4A75-A732-649C261ED90C}|SapphireTool\\SapphireTool.csproj|C:\\Users\\Administrator\\Documents\\GitHub\\SapphireTool\\sapphiretool\\main.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F2485E94-21F1-4A75-A732-649C261ED90C}|SapphireTool\\SapphireTool.csproj|solutionrelative:sapphiretool\\main.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{F2485E94-21F1-4A75-A732-649C261ED90C}|SapphireTool\\SapphireTool.csproj|C:\\Users\\Administrator\\Documents\\GitHub\\SapphireTool\\sapphiretool\\main.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{F2485E94-21F1-4A75-A732-649C261ED90C}|SapphireTool\\SapphireTool.csproj|solutionrelative:sapphiretool\\main.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F2485E94-21F1-4A75-A732-649C261ED90C}|SapphireTool\\SapphireTool.csproj|C:\\Users\\Administrator\\Documents\\GitHub\\SapphireTool\\sapphiretool\\main.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{F2485E94-21F1-4A75-A732-649C261ED90C}|SapphireTool\\SapphireTool.csproj|solutionrelative:sapphiretool\\main.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Administrator\\AppData\\Local\\Temp\\.vsdbgsrc\\8caa55885db827e4d60f3d5c73afc8fffa843cc71a5a1ef73ed88dc8694fb812\\ThrowHelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{F2485E94-21F1-4A75-A732-649C261ED90C}|SapphireTool\\SapphireTool.csproj|C:\\Users\\Administrator\\Documents\\GitHub\\SapphireTool\\sapphiretool\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{F2485E94-21F1-4A75-A732-649C261ED90C}|SapphireTool\\SapphireTool.csproj|solutionrelative:sapphiretool\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F2485E94-21F1-4A75-A732-649C261ED90C}|SapphireTool\\SapphireTool.csproj|C:\\Users\\Administrator\\Documents\\GitHub\\SapphireTool\\sapphiretool\\utils.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F2485E94-21F1-4A75-A732-649C261ED90C}|SapphireTool\\SapphireTool.csproj|solutionrelative:sapphiretool\\utils.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Administrator\\AppData\\Local\\Temp\\.vsdbgsrc\\7cfd5d3e715f631b95ecbedfde0fd043cc3a7000c8899ea03496477363f27837\\Process.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{00000000-0000-0000-0000-000000000000}|\u003CSolution\u003E|SapphireTool||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F2485E94-21F1-4A75-A732-649C261ED90C}|SapphireTool\\SapphireTool.csproj|C:\\Users\\Administrator\\Documents\\GitHub\\SapphireTool\\sapphiretool\\utils.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F2485E94-21F1-4A75-A732-649C261ED90C}|SapphireTool\\SapphireTool.csproj|solutionrelative:sapphiretool\\utils.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -40,7 +36,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Document",
@@ -50,7 +46,7 @@
               "RelativeDocumentMoniker": "SapphireTool\\Main.Designer.cs",
               "ToolTip": "C:\\Users\\Administrator\\Documents\\GitHub\\SapphireTool\\SapphireTool\\Main.Designer.cs",
               "RelativeToolTip": "SapphireTool\\Main.Designer.cs",
-              "ViewState": "AQIAAB4EAAAAAAAAAAAiwDIEAABKAAAA",
+              "ViewState": "AQIAAD4BAAAAAAAAAAAiwEYBAABaAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-03-10T01:55:32.995Z",
               "IsPinned": true,
@@ -58,13 +54,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "Main.cs",
               "DocumentMoniker": "C:\\Users\\Administrator\\Documents\\GitHub\\SapphireTool\\SapphireTool\\Main.cs",
               "RelativeDocumentMoniker": "SapphireTool\\Main.cs",
               "ToolTip": "C:\\Users\\Administrator\\Documents\\GitHub\\SapphireTool\\SapphireTool\\Main.cs",
               "RelativeToolTip": "SapphireTool\\Main.cs",
-              "ViewState": "AQIAAG4CAAAAAAAAAAAiwHwCAAARAAAA",
+              "ViewState": "AQIAABoCAAAAAAAAAAAuwAoAAAAgAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-03-10T02:39:26.108Z",
               "IsPinned": true,
@@ -72,20 +68,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "ThrowHelper.cs",
-              "DocumentMoniker": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\.vsdbgsrc\\8caa55885db827e4d60f3d5c73afc8fffa843cc71a5a1ef73ed88dc8694fb812\\ThrowHelper.cs",
-              "RelativeDocumentMoniker": "..\\..\\..\\AppData\\Local\\Temp\\.vsdbgsrc\\8caa55885db827e4d60f3d5c73afc8fffa843cc71a5a1ef73ed88dc8694fb812\\ThrowHelper.cs",
-              "ToolTip": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\.vsdbgsrc\\8caa55885db827e4d60f3d5c73afc8fffa843cc71a5a1ef73ed88dc8694fb812\\ThrowHelper.cs [Read Only]",
-              "RelativeToolTip": "..\\..\\..\\AppData\\Local\\Temp\\.vsdbgsrc\\8caa55885db827e4d60f3d5c73afc8fffa843cc71a5a1ef73ed88dc8694fb812\\ThrowHelper.cs [Read Only]",
-              "ViewState": "AQIAAAsAAAAAAAAAAAAUwBsAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-09T18:29:33.256Z",
-              "EditorCaption": " [Read Only]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 0,
               "Title": "Main.cs [Design]",
               "DocumentMoniker": "C:\\Users\\Administrator\\Documents\\GitHub\\SapphireTool\\SapphireTool\\Main.cs",
               "RelativeDocumentMoniker": "SapphireTool\\Main.cs",
@@ -93,22 +76,29 @@
               "RelativeToolTip": "SapphireTool\\Main.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-03-10T04:05:18.936Z",
+              "IsPinned": true,
               "EditorCaption": " [Design]"
             },
             {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Main.cs",
-              "DocumentMoniker": "C:\\Users\\Administrator\\Documents\\GitHub\\SapphireTool\\Configurator\\Main.cs",
-              "RelativeDocumentMoniker": "Configurator\\Main.cs",
-              "ToolTip": "C:\\Users\\Administrator\\Documents\\GitHub\\SapphireTool\\Configurator\\Main.cs",
-              "RelativeToolTip": "Configurator\\Main.cs",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-02-19T07:36:32.366Z"
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{269a02dc-6af8-11d3-bdc4-00c04f688e50}"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 4,
+              "Title": "Process.cs",
+              "DocumentMoniker": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\.vsdbgsrc\\7cfd5d3e715f631b95ecbedfde0fd043cc3a7000c8899ea03496477363f27837\\Process.cs",
+              "RelativeDocumentMoniker": "..\\..\\..\\AppData\\Local\\Temp\\.vsdbgsrc\\7cfd5d3e715f631b95ecbedfde0fd043cc3a7000c8899ea03496477363f27837\\Process.cs",
+              "ToolTip": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\.vsdbgsrc\\7cfd5d3e715f631b95ecbedfde0fd043cc3a7000c8899ea03496477363f27837\\Process.cs",
+              "RelativeToolTip": "..\\..\\..\\AppData\\Local\\Temp\\.vsdbgsrc\\7cfd5d3e715f631b95ecbedfde0fd043cc3a7000c8899ea03496477363f27837\\Process.cs",
+              "ViewState": "AQIAAEwIAAAAAAAAAAAUwHEIAAAGAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-11T15:12:48.037Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\Administrator\\Documents\\GitHub\\SapphireTool\\SapphireTool\\Program.cs",
               "RelativeDocumentMoniker": "SapphireTool\\Program.cs",
@@ -116,11 +106,12 @@
               "RelativeToolTip": "SapphireTool\\Program.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAAaAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-02-19T07:36:56.873Z"
+              "WhenOpened": "2024-02-19T07:36:56.873Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 5,
               "Title": "SapphireTool",
               "DocumentMoniker": "C:\\Users\\Administrator\\Documents\\GitHub\\SapphireTool\\SapphireTool\\SapphireTool.csproj",
               "RelativeDocumentMoniker": "SapphireTool\\SapphireTool.csproj",
@@ -137,9 +128,10 @@
               "RelativeDocumentMoniker": "SapphireTool\\Utils.cs",
               "ToolTip": "C:\\Users\\Administrator\\Documents\\GitHub\\SapphireTool\\SapphireTool\\Utils.cs",
               "RelativeToolTip": "SapphireTool\\Utils.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAEYAAAAAAAAA",
+              "ViewState": "AQIAAF8AAAAAAAAAAAAIwGoAAAAUAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-10T02:41:14.201Z"
+              "WhenOpened": "2024-03-10T02:41:14.201Z",
+              "EditorCaption": ""
             }
           ]
         }
